@@ -1,0 +1,51 @@
+:root {
+	--gap: 1rem;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Arial", sans-serif;
+	background-color: #242222;
+	color: #e0d8d8;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 0 var(--gap);
+	padding-top: var(--gap);
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: var(--gap);
+	background-color: #333030;
+	z-index: 1;
+}
+
+.container {
+	position: absolute;
+	top: calc(var(--gap) * 3);
+	bottom: calc(var(--gap) * 2); /* Adjust as needed */
+	left: 0;
+	right: 0;
+	overflow: auto; /* To enable scrolling if content overflows */
+	padding: var(--gap);
+}
+
+footer {
+	position: fixed;
+	bottom: var(--gap);
+	width: 100%;
+	margin: 0 var(--gap);
+	padding-top: var(--gap);
+	background-color: #242222; /* Same as body background color */
+	z-index: 1; /* To ensure footer is above other content */
+}
+
+ul {
+	display: flex;
+	flex-direction: row;
+	gap: var(--gap);
+	justify-content: flex-end;
+}
