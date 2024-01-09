@@ -1,0 +1,111 @@
+ul {
+	gap: var(--size-fluid-2);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+li {
+	transition: 150ms;
+}
+
+li:hover {
+	color: var(--brand-color-accent);
+}
+
+.menu {
+	display: flex;
+	flex: 0 0 auto;
+	justify-content: flex-end;
+	gap: 10px;
+	padding-right: var(--gap);
+	margin-right: var(--gap);
+}
+
+@media (max-width: 478px) {
+	.menu {
+		flex-wrap: wrap;
+	}
+}
+
+/* contact */
+.square-contact {
+	position: absolute;
+	top: 100%; /* Start the square above the .accent div */
+	left: 0%;
+	width: var(--size-fluid-6);
+	height: var(--size-fluid-4);
+	background-color: var(--brand-color-accent);
+	z-index: -1;
+	transition: top var(--brand-transition-time), left var(--brand-transition-time); /* Animate the top and left properties */
+}
+
+.accent {
+	position: relative;
+	color: var(--brand-color-accent);
+	overflow: hidden;
+}
+
+.accent:hover {
+	color: var(--brand-font-color);
+	overflow: visible;
+}
+
+.accent:hover .square-contact {
+	top: 5%; /* Offset the square from the text */
+	left: 2%;
+}
+
+.accent::before {
+	content: "";
+	position: absolute;
+	top: 120%; /* Start the square above the .accent div */
+	left: -5;
+	z-index: -1;
+}
+
+.accent:hover::before {
+	top: 0;
+}
+
+/* about */
+.square-about {
+	position: absolute;
+	top: -300%;
+	left: 0%;
+	width: var(--size-9);
+	height: var(--size-8);
+	background-color: var(--brand-font-color);
+	z-index: -1;
+	border: 1px solid black;
+	transition: left var(--brand-transition-time); /* Animate the top and left properties */
+}
+
+.about {
+	position: relative;
+	color: var(--brand-font-color);
+	overflow: hidden;
+}
+
+.about:hover {
+	color: var(--brand-color-accent);
+	overflow: visible;
+}
+
+.about:hover .square-about {
+	top: -25%; /* Offset the square from the text */
+	left: -15%;
+	border-radius: 10px;
+	transform: rotate(1.5deg);
+}
+
+.about::before {
+	content: "";
+	position: absolute;
+	top: 120%; /* Start the square above the .accent div */
+	left: -5;
+	z-index: -1;
+}
+
+.about:hover::before {
+	/* top: -20%; */
+}

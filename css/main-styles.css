@@ -1,52 +1,75 @@
+@import "https://unpkg.com/open-props";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@300;500;700;800;900&display=swap");
+
 :root {
-	--gap: 1rem;
+	--gap: var(--size-fluid-3);
+	--brand-background-color: #fff;
+	--brand-color-accent: #28c2e4;
+	--brand-font-color: #282928;
+	--brand-border-color: #28292859;
+	--brand-background-color-secondary: #e9e9e9;
+	--brand-font-main: "Raleway", sans-serif;
+	--brand-font-accent: "Oswald", sans-serif;
+	--brand-font-size-normal: var(--font-size-fluid-2);
+	--brand-transition-time: 150ms;
 }
 
 body {
 	margin: 0;
 	padding: 0;
-	font-family: "Arial", sans-serif;
-	background-color: #242222;
-	padding-top: calc(var(--gap) * 3);
-	color: #e0d8d8;
+	font-family: var(--brand-font-accent), sans-serif;
+	background-color: var(--brand-background-color);
+	color: var(--brand-font-color);
 	box-sizing: border-box;
 }
 
 header {
 	position: fixed;
 	top: 0;
-	width: 100%;
+	width: 100vw;
+	display: grid;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 	padding: 0 var(--gap);
 	padding-top: var(--gap);
-	display: flex;
-	justify-content: space-between;
 	padding-bottom: var(--gap);
-	background-color: #333030;
-	box-shadow: 0 4px 2px -2px rgba(128, 128, 128, 0.172);
+	margin-bottom: 1rem;
+	background-color: var(--brand-background-color);
+	color: var(--brand-font-color);
+	/* box-shadow: 0 4px 2px -2px rgba(128, 128, 128, 0.172); */
 	z-index: 1;
 	align-items: center;
+	font-family: var(--brand-font-main);
+	font-weight: 800;
+	font-size: var(--size-4);
 }
 
-ul {
-	gap: 10px;
-	list-style: none;
-	margin: 0;
+.container {
+	padding: var(--size-fluid-5);
+}
+
+.bold {
+	font-family: var(--brand-font-accent);
+	font-weight: 800;
+	font-size: var(--font-size-fluid-3);
+	color: var(--brand-color-accent);
+}
+
+h2 {
+	font-size: var(--font-size-fluid-2);
 	padding: 0;
-}
-
-.menu {
-	display: flex;
-	gap: 10px;
-	padding-right: var(--gap);
-	margin-right: var(--gap);
+	margin: 0;
 }
 
 footer {
 	position: fixed;
 	bottom: var(--gap);
 	width: 100%;
-	margin: 0 var(--gap);
-	padding-top: var(--gap);
-	background-color: #242222; /* Same as body background color */
-	z-index: 1; /* To ensure footer is above other content */
+	/* margin: 0 var(--gap); */
+	padding: var(--gap);
+	bottom: 0;
+	background-color: var(--brand-color-accent);
+	border-top: 1px solid rgba(0, 0, 0, 0.295);
+	z-index: 1;
 }
