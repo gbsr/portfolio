@@ -5,6 +5,7 @@
 	--gap: var(--size-fluid-3);
 	--brand-background-color: #fff;
 	--brand-color-accent: #28c2e4;
+	--brand-color-accent_semi: #28c1e43f;
 	--brand-font-color: #282928;
 	--brand-border-color: #28292859;
 	--brand-background-color-secondary: #e9e9e9;
@@ -36,16 +37,17 @@ header {
 	margin-bottom: 1rem;
 	background-color: var(--brand-background-color);
 	color: var(--brand-font-color);
-	z-index: 11;
+	z-index: 9999;
 	align-items: center;
 	font-family: var(--brand-font-main);
 	font-weight: 800;
 	font-size: var(--size-fluid-2);
-	width: 100%;
+	width: 96%;
 	border-bottom: 1px solid transparent;
 	transition: border-bottom 40ms ease-in-out;
 	backdrop-filter: blur(8px);
 	opacity: 0.98;
+	overflow-y: hidden;
 }
 
 @media (max-width: 600px) {
