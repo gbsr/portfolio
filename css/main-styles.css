@@ -26,10 +26,7 @@ body {
 header {
 	position: fixed;
 	top: 0;
-	width: 100vw;
-	display: grid;
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: space-between;
 	padding: 0 var(--gap);
 	padding-top: var(--gap);
@@ -37,12 +34,19 @@ header {
 	margin-bottom: 1rem;
 	background-color: var(--brand-background-color);
 	color: var(--brand-font-color);
-	/* box-shadow: 0 4px 2px -2px rgba(128, 128, 128, 0.172); */
 	z-index: 1;
 	align-items: center;
 	font-family: var(--brand-font-main);
 	font-weight: 800;
 	font-size: var(--size-4);
+	width: 100%;
+}
+
+@media (max-width: 600px) {
+	header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 }
 
 .container {

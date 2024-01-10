@@ -21,12 +21,6 @@ li:hover {
 	margin-right: var(--gap);
 }
 
-@media (max-width: 478px) {
-	.menu {
-		flex-wrap: wrap;
-	}
-}
-
 /* contact */
 .square-contact {
 	position: absolute;
@@ -107,5 +101,5 @@ li:hover {
 }
 
 .about:hover::before {
-	/* top: -20%; */
+	top: -20%;
 }

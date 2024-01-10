@@ -11,8 +11,6 @@
 	padding-top: calc(var(--gap));
 	gap: 10px;
 }
-@media (max-width: 570px) {
-}
 
 .grid {
 	padding: var(--gap);
