@@ -1,12 +1,11 @@
 
-// this function resizes my hero container to always be below the header no matter how it is resized due to wrapping.
-window.addEventListener('resize', adjustContainerMargin);
+// rotate turned div
+document.querySelector('.turned').addEventListener('mouseenter', function (event) {
+	event.target.style.transform = 'rotate(90deg)';
+});
 
-function adjustContainerMargin() {
-	let headerHeight = document.querySelector('header').offsetHeight;
-	document.querySelector('.container').style.marginTop = `${headerHeight}px`;
-}
-
-// Call the function initially to set the margin
-adjustContainerMargin();
-
+document.querySelector('.turned').addEventListener('mouseleave', function (event) {
+	setTimeout(function () {
+		event.target.style.transform = 'rotate(0deg)';
+	}, 350); // delay in ms
+});
