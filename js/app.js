@@ -9,3 +9,4 @@ function adjustContainerMargin() {
 
 // Call the function initially to set the margin
 adjustContainerMargin();
+

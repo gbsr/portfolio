@@ -40,6 +40,9 @@ header {
 	font-weight: 800;
 	font-size: var(--size-4);
 	width: 100%;
+	border-bottom: 1px solid transparent;
+	transition: border-bottom 40ms ease-in-out;
+	backdrop-filter: blur(8px);
 }
 
 @media (max-width: 600px) {
