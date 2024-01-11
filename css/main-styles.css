@@ -27,25 +27,15 @@ body {
 }
 
 header {
-	position: fixed;
-	top: 0;
+	padding: 1.5rem;
 	display: flex;
 	justify-content: space-between;
-	padding: 0 var(--gap);
-	padding-top: var(--gap);
-	padding-bottom: var(--gap);
-	margin-bottom: 1rem;
 	background-color: var(--brand-background-color);
 	color: var(--brand-font-color);
 	z-index: 9999;
-	align-items: center;
 	font-family: var(--brand-font-main);
 	font-weight: 800;
 	font-size: var(--size-fluid-3);
-	max-width: 100%;
-	border-bottom: 1px solid transparent;
-	transition: border-bottom 40ms ease-in-out;
-	backdrop-filter: blur(8px);
 	opacity: 0.98;
 	overflow-y: hidden;
 }
@@ -62,9 +52,16 @@ header {
 	}
 }
 
-.container {
-	padding: var(--size-fluid-5);
-	height: 100vh;
+.spacer {
+	transform: rotate(3deg) translateX(-10%);
+	bottom: var(--gap);
+	width: 110%;
+	/* margin: 0 var(--gap); */
+	padding: var(--gap);
+	bottom: 0;
+	background-color: var(--brand-color-accent);
+	border-top: 1px solid rgba(0, 0, 0, 0.295);
+	z-index: 1;
 }
 
 .bold {
@@ -101,17 +98,23 @@ h3 {
 }
 
 p {
-	font-size: var(--size-fluid-1);
+	font-size: var(--size-fluid-4);
 }
 
 footer {
-	/* position: fixed; */
-	bottom: var(--gap);
+	position: fixed;
+	opacity: 0.92;
+	backdrop-filter: blur(20px);
+	bottom: 0;
 	width: 100%;
 	/* margin: 0 var(--gap); */
-	padding: var(--gap);
-	bottom: 0;
+	padding-bottom: var(--gap);
 	background-color: var(--brand-color-accent);
 	border-top: 1px solid rgba(0, 0, 0, 0.295);
 	z-index: 1;
+}
+
+header,
+footer {
+	transition: top 0.5s ease, bottom 0.25s ease;
 }
