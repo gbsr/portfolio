@@ -18,7 +18,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	width: 96vw;
+	width: 100%;
 	font-family: var(--brand-font-accent), sans-serif;
 	background-color: var(--brand-background-color);
 	color: var(--brand-font-color);
@@ -42,12 +42,16 @@ header {
 	font-family: var(--brand-font-main);
 	font-weight: 800;
 	font-size: var(--size-fluid-3);
-	width: 96%;
+	max-width: 100%;
 	border-bottom: 1px solid transparent;
 	transition: border-bottom 40ms ease-in-out;
 	backdrop-filter: blur(8px);
 	opacity: 0.98;
 	overflow-y: hidden;
+}
+
+.logo {
+	max-width: 100%;
 }
 
 @media (max-width: 600px) {
