@@ -41,7 +41,7 @@ header {
 	align-items: center;
 	font-family: var(--brand-font-main);
 	font-weight: 800;
-	font-size: var(--size-fluid-2);
+	font-size: var(--size-fluid-3);
 	width: 96%;
 	border-bottom: 1px solid transparent;
 	transition: border-bottom 40ms ease-in-out;
@@ -71,6 +71,7 @@ header {
 }
 
 .turned {
+	border: 1px dashed var(--brand-color-accent-semi);
 	padding-top: 20px;
 	padding-bottom: 20px;
 	display: inline-block;
@@ -78,7 +79,7 @@ header {
 }
 
 h1 {
-	font-size: var(--size-fluid-4);
+	font-size: var(--size-fluid-5);
 	padding: 0;
 	margin: 0;
 }

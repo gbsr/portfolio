@@ -1,5 +1,5 @@
 
-// rotate turned div
+// rotate div
 document.querySelector('.turned').addEventListener('mouseenter', function (event) {
 	event.target.style.transform = 'rotate(90deg)';
 });
