@@ -1,4 +1,4 @@
-import { getCorrectVHUnits } from "./helpers.js";
+import { getCorrectVHUnitsWidth, getCorrectVHUnitsHeight } from "./helpers.js";
 
 // rotate div
 document.querySelector('.turned').addEventListener('mouseenter', function (event) {
@@ -27,14 +27,46 @@ let observer = new IntersectionObserver(function (entries) {
 	}
 });
 
-let hero = document.querySelector('.hero');
-let calculatedVH = getCorrectVHUnits(hero);
-hero.style.paddingTop = header.offsetHeight + 'px';
+calculateCorrectViewportUnits();
 
 // Start observing the header
 observer.observe(header);
 
 updateProfileTransform(0.025);
+
+
+function calculateCorrectViewportUnits() {
+	let body = document.querySelector('body');
+	let hero = document.querySelector('.hero');
+	let section1 = document.querySelector('.section1');
+	let section2 = document.querySelector('.section2');
+
+	if (body) {
+		let calculatedHeight = getCorrectVHUnitsHeight(body);
+		let calculatedWidth = getCorrectVHUnitsWidth(body);
+		body.style.height = calculatedHeight;
+		body.style.width = calculatedWidth;
+	}
+
+	if (hero) {
+		let calculatedHeight = getCorrectVHUnitsHeight(hero);
+		hero.style.height = calculatedHeight;
+	}
+
+	if (section1) {
+		let calculatedWidth = getCorrectVHUnitsWidth(section1);
+		let calculatedHeight = getCorrectVHUnitsHeight(section1);
+		section1.style.width = calculatedWidth;
+		section1.style.height = calculatedHeight;
+	}
+
+	if (section2) {
+		let calculatedWidth = getCorrectVHUnitsWidth(section2);
+		let calculatedHeight = getCorrectVHUnitsHeight(section2);
+		section2.style.width = calculatedWidth;
+		section2.style.height = calculatedHeight;
+	}
+}
 
 function updateProfileTransform(speed) {
 
@@ -48,7 +80,7 @@ function updateProfileTransform(speed) {
 	// Listen for mousemove events on the document
 	document.addEventListener('mousemove', function (e) {
 		// Calculate the target position
-		targetX = (window.innerWidth / 2 + e.pageX) / 25;
+		targetX = ((window.innerWidth / 3 - e.pageX) / 25) - 50;
 		targetY = (window.innerHeight / 2 + e.pageY) / 25;
 	});
 
