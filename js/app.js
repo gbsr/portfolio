@@ -1,4 +1,4 @@
-import { getCorrectVHUnits } from "./helpers";
+import { getCorrectVHUnits } from "./helpers.js";
 
 // rotate div
 document.querySelector('.turned').addEventListener('mouseenter', function (event) {
