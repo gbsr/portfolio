@@ -28,3 +28,42 @@ let observer = new IntersectionObserver(function (entries) {
 
 // Start observing the header
 observer.observe(header);
+
+updateProfileTransform(0.025);
+
+function updateProfileTransform(speed) {
+
+	// declaring variables
+	let targetX = 0, targetY = 0;
+	let currentX = 0, currentY = 0;
+
+	// Select the .profile element
+	let profile = document.querySelector('.profile');
+
+	// Listen for mousemove events on the document
+	document.addEventListener('mousemove', function (e) {
+		// Calculate the target position
+		targetX = (window.innerWidth / 2 + e.pageX) / 25;
+		targetY = (window.innerHeight / 2 + e.pageY) / 25;
+	});
+
+	// Function to smoothly transition the element's position
+	function animate() {
+		// Calculate the distance to the target position
+		let dx = targetX - currentX;
+		let dy = targetY - currentY;
+
+		// Gradually adjust the current position
+		currentX += dx * speed;
+		currentY += dy * speed;
+
+		// Update the transform property of the .profile element
+		profile.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+		// Request the next frame
+		requestAnimationFrame(animate);
+	}
+
+	// Start the animation
+	animate();
+}
