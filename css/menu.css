@@ -15,14 +15,24 @@ li:hover {
 .menu {
 	display: flex;
 	flex: 0 0 auto;
+	height: 30px;
 	justify-content: flex-end;
 	gap: 10px;
 	padding-right: var(--gap);
 	margin-right: var(--gap);
 }
 
-.contact {
-	color: var(--brand-color-accent);
+.underline {
+	opacity: 1;
+	background-color: var(--brand-color-accent);
+	transform: translateY(-4px);
+	width: 100%;
+	height: 4px;
+}
+
+.underline:hover,
+.underline:focus {
+	opacity: 0;
 }
 
 /* contact */

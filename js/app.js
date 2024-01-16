@@ -1,3 +1,4 @@
+import { getCorrectVHUnits } from "./helpers";
 
 // rotate div
 document.querySelector('.turned').addEventListener('mouseenter', function (event) {
@@ -25,6 +26,10 @@ let observer = new IntersectionObserver(function (entries) {
 		footer.style.bottom = '-100vh';
 	}
 });
+
+let hero = document.querySelector('.hero');
+let calculatedVH = getCorrectVHUnits(hero);
+hero.style.paddingTop = header.offsetHeight + 'px';
 
 // Start observing the header
 observer.observe(header);

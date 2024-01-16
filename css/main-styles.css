@@ -71,6 +71,10 @@ header {
 	color: var(--brand-color-accent);
 }
 
+.blue {
+	color: var(--brand-color-accent);
+}
+
 .turned {
 	border: 1px dashed var(--brand-color-accent-semi);
 	padding-top: 20px;
