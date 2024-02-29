@@ -104,3 +104,31 @@ function updateProfileTransform(speed) {
 	// Start the animation
 	animate();
 }
+
+
+/**
+ * Adds mouseover and mouseout event listeners to portfolio items
+ * to add a 3D transform on mouseover and remove it on mouseout.
+ * The transform applies a random rotation on the X and Y axes,
+ * and a slight scale increase.
+ */
+window.onload = function () {
+	const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+	portfolioItems.forEach((item, index) => {
+		item.style.transition = 'transform 0.5s ease';
+
+		item.addEventListener("mouseover", function () {
+			const randomRotation = Math.random() * (5 - 4) + 2;
+			const randomScale = Math.random() * (1.008 - 1.02) + 1.02;
+			const direction = index % 2 === 0 ? 1 : -1;
+
+			item.style.transform = `perspective(1500px) rotateX(${randomRotation * direction}deg) rotateY(${randomRotation * direction
+				}deg) scale(${randomScale})`;
+		});
+
+		item.addEventListener("mouseout", function () {
+			item.style.transform = "";
+		});
+	});
+};

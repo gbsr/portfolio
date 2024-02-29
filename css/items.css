@@ -62,17 +62,30 @@
 .portfolio-content {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid pink;
 	gap: 10px;
 }
 
 .portfolio-item {
-	gap: 10px;
-	padding-top: 1.25rem;
-	/* padding: 1rem; */
+	transition: 250ms ease-out;
 	display: flex;
 	flex-direction: row;
+	gap: 10px;
+	padding-top: 1.25rem;
 }
+.portfolio-item:nth-child(even) {
+	flex-direction: row-reverse;
+}
+
+.portfolio-item:nth-child(odd) {
+	flex-direction: row;
+}
+
+.portfolio-item:hover .screenshot,
+.portfolio-item:focus .screenshot {
+	transition: 0.5s;
+	box-shadow: 0 0 40px #0ca3da; /* Adjust color and blur radius as needed */
+}
+
 .portfolio-title {
 	font-weight: bolder;
 	font-size: var(--size-fluid-3);
@@ -80,8 +93,16 @@
 }
 .card {
 	flex: 1;
-	border: 1px solid black;
 	border-radius: 10px;
+	padding-bottom: 2rem;
+}
+
+.screenshot {
+	transition: 0.5s;
+	width: 380px;
+	margin-right: 20px;
+	border-radius: 20px;
+	border: 1px solid rgba(100, 99, 99, 0.281);
 }
 
 .description-wrapper,
