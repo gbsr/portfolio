@@ -80,7 +80,7 @@ function updateProfileTransform(speed) {
 	// Listen for mousemove events on the document
 	document.addEventListener('mousemove', function (e) {
 		// Calculate the target position
-		targetX = ((window.innerWidth / 3 - e.pageX) / 25) - 50;
+		targetX = ((window.innerWidth / 3 - e.pageX) / 25);
 		targetY = (window.innerHeight / 2 + e.pageY) / 25;
 	});
 

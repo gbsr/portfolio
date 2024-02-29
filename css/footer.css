@@ -1,0 +1,28 @@
+footer {
+	position: fixed;
+	padding-inline: 1.5rem;
+	backdrop-filter: blur(20px);
+	bottom: 0;
+	width: 100vw;
+	background-color: var(--brand-color-accent);
+	border-top: 1px solid rgba(0, 0, 0, 0.295);
+	z-index: 1;
+	padding: 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	color: var(--brand-font-color);
+	z-index: 9999;
+	font-family: var(--brand-font-main);
+	font-weight: 800;
+	font-size: var(--size-fluid-3);
+	opacity: 0.98;
+	overflow-y: hidden;
+}
+
+footer a:hover {
+	color: var(--brand-font-color);
+}
+
+footer {
+	transition: top 0.85s ease, bottom 0.25s ease;
+}
