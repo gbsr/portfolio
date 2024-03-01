@@ -126,6 +126,12 @@
 	flex: 1;
 }
 
+@media (max-width: 760) {
+	p.profile {
+		opacity: 0.25;
+	}
+}
+
 @media (max-width: 600px) {
 	.container {
 		display: flex;

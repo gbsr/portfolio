@@ -5,7 +5,7 @@
  * Also defines animations for the menu items.
 */
 ul {
-	gap: var(--size-fluid-2);
+	gap: var(--size-fluid-3);
 	list-style: none;
 	margin: 0;
 	padding: 0;
