@@ -1,3 +1,11 @@
+/**
+ * CSS stylesheet that defines branding variables, resets default styles, 
+ * sets up scroll snap, and provides base styles for common elements.
+ * 
+ * Defines custom properties for colors, fonts, sizes, etc. Sets up smooth 
+ * scrolling and scroll snap. Styles header, footer, sections, text elements. 
+ * Includes breakpoints for responsive design. Imports fonts and normalize.css.
+ */
 @import "https://unpkg.com/open-props";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@300;500;700;800;900&display=swap");
 
@@ -15,12 +23,16 @@
 	--brand-transition-time: 150ms;
 }
 html {
-	scroll-behavior: smooth;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 
 body {
-	scroll-snap-type: y mandatory;
+	scroll-behavior: smooth;
+	/* scroll-snap-type: y mandatory; */
 	overflow-y: scroll;
+	overflow-x: hidden;
 	margin: 0;
 	padding: 0;
 	height: 100vh;
@@ -28,7 +40,6 @@ body {
 	background-color: var(--brand-background-color);
 	color: var(--brand-font-color);
 	box-sizing: border-box;
-	/* overflow-x: hidden; */
 }
 
 a {
@@ -50,9 +61,9 @@ footer {
 	z-index: 9999;
 	font-family: var(--brand-font-main);
 	font-weight: 800;
-	font-size: var(--size-fluid-3);
+	font-size: var(--size-fluid-4);
 	opacity: 0.98;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 .hero,
@@ -96,7 +107,7 @@ footer {
 
 .spacer {
 	bottom: var(--gap);
-	width: 110%;
+	width: 100%;
 	/* margin: 0 var(--gap); */
 	padding: var(--gap);
 	bottom: 0;
@@ -125,9 +136,11 @@ footer {
 }
 
 h1 {
-	font-size: var(--size-fluid-5);
+	font-size: var(--size-fluid-7);
 	padding: 0;
 	margin: 0;
+	padding-bottom: 4rem;
+	font-weight: var(--font-weight-9);
 }
 
 h2 {
@@ -172,5 +185,20 @@ footer {
 @media (max-width: 1000px) {
 	.section-text {
 		width: 90vw;
+	}
+}
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: var(--size-fluid-5);
+	}
+	hero {
+		justify-content: space-around;
+		height: 60%;
+	}
+	header,
+	footer {
+		font-size: var(--size-fluid-3);
+		flex-direction: column;
 	}
 }

@@ -1,3 +1,9 @@
+/**
+ * Styles for the site menu and navigation.
+ * Defines base ul, li styles and animations. 
+ * Includes mobile, desktop, and hover styles.
+ * Also defines animations for the menu items.
+*/
 ul {
 	gap: var(--size-fluid-2);
 	list-style: none;
@@ -11,7 +17,11 @@ li {
 li:hover {
 	color: var(--brand-color-accent);
 }
-
+@media (max-width: 600px) {
+	li > a {
+		font-size: var(--font-size-fluid-1) !important;
+	}
+}
 .menu {
 	display: flex;
 	flex: 0 0 auto;

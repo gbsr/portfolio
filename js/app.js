@@ -1,29 +1,43 @@
+/**
+ * This code handles some UI interactions and animations:
+ *
+ * - Rotates a .turned element on hover
+ * - Shows/hides header and footer based on intersection with viewport
+ * - Calculates correct viewport height/width units for elements
+ * - Animates profile image position based on mouse move
+ * - Applies 3D transform to portfolio items on hover
+ */
 import { getCorrectVHUnitsWidth, getCorrectVHUnitsHeight } from "./helpers.js";
 
 // rotate div
-document.querySelector('.turned').addEventListener('mouseenter', function (event) {
-	event.target.style.transform = 'rotate(90deg)';
+document.querySelector(".turned").addEventListener("mouseenter", function (event) {
+	event.target.style.transform = "rotate(90deg)";
 });
 
-document.querySelector('.turned').addEventListener('mouseleave', function (event) {
+document.querySelector(".turned").addEventListener("mouseleave", function (event) {
 	setTimeout(function () {
-		event.target.style.transform = 'rotate(0deg)';
+		event.target.style.transform = "rotate(0deg)";
 	}, 350); // delay in ms
 });
 
-let header = document.querySelector('header');
-let footer = document.querySelector('footer');
+let header = document.querySelector("header");
+let footer = document.querySelector("footer");
 
 let observer = new IntersectionObserver(function (entries) {
 	// entries[0] is the first (and only) entry in the array
 	if (!entries[0].isIntersecting) {
 		// The header is not visible, so show the footer
-		header.style.top = '-100vh';
-		footer.style.bottom = '0';
+		header.style.top = "-100vh";
+		footer.style.bottom = "0";
+		// Adjust the body height to push it up by the size of the footer
+		let footerHeight = footer.offsetHeight;
+		document.body.style.height = `calc(100vh - ${footerHeight}px)`;
 	} else {
 		// The header is visible, so hide the footer
-		header.style.top = '0';
-		footer.style.bottom = '-100vh';
+		header.style.top = "0";
+		footer.style.bottom = "-100vh";
+		// Reset the body height
+		document.body.style.height = "100vh";
 	}
 });
 
@@ -34,12 +48,11 @@ observer.observe(header);
 
 updateProfileTransform(0.025);
 
-
 function calculateCorrectViewportUnits() {
-	let body = document.querySelector('body');
-	let hero = document.querySelector('.hero');
-	let section1 = document.querySelector('.section1');
-	let section2 = document.querySelector('.section2');
+	let body = document.querySelector("body");
+	let hero = document.querySelector(".hero");
+	let section1 = document.querySelector(".section1");
+	let section2 = document.querySelector(".section2");
 
 	if (body) {
 		let calculatedHeight = getCorrectVHUnitsHeight(body);
@@ -69,18 +82,19 @@ function calculateCorrectViewportUnits() {
 }
 
 function updateProfileTransform(speed) {
-
 	// declaring variables
-	let targetX = 0, targetY = 0;
-	let currentX = 0, currentY = 0;
+	let targetX = 0,
+		targetY = 0;
+	let currentX = 0,
+		currentY = 0;
 
 	// Select the .profile element
-	let profile = document.querySelector('.profile');
+	let profile = document.querySelector(".profile");
 
 	// Listen for mousemove events on the document
-	document.addEventListener('mousemove', function (e) {
+	document.addEventListener("mousemove", function (e) {
 		// Calculate the target position
-		targetX = ((window.innerWidth / 3 - e.pageX) / 25);
+		targetX = (window.innerWidth / 3 - e.pageX) / 25;
 		targetY = (window.innerHeight / 2 + e.pageY) / 25;
 	});
 
@@ -105,7 +119,6 @@ function updateProfileTransform(speed) {
 	animate();
 }
 
-
 /**
  * Adds mouseover and mouseout event listeners to portfolio items
  * to add a 3D transform on mouseover and remove it on mouseout.
@@ -116,7 +129,7 @@ window.onload = function () {
 	const portfolioItems = document.querySelectorAll(".portfolio-item");
 
 	portfolioItems.forEach((item, index) => {
-		item.style.transition = 'transform 0.5s ease';
+		item.style.transition = "transform 0.5s ease";
 
 		item.addEventListener("mouseover", function () {
 			const randomRotation = Math.random() * (5 - 4) + 2;
