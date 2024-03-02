@@ -145,3 +145,187 @@ window.onload = function () {
 		});
 	});
 };
+
+// run after page load, and only if no touchdevice.
+window.onload = function () {
+	if (!('ontouchstart' in window)) {
+		document.body.style.cursor = 'none';
+
+		// mouse pointer animation
+		/**
+ * YouTube Tutorial:
+ * https://youtu.be/wG_5453Vq98
+ */
+
+		console.clear();
+
+		// Select the circle element
+		const circleElement = document.querySelector('.circle');
+
+		// Create objects to track mouse position and custom cursor position
+		const mouse = { x: 0, y: 0 }; // Track current mouse position
+		const previousMouse = { x: 0, y: 0 }; // Store the previous mouse position
+		const circle = { x: 0, y: 0 }; // Track the circle position
+
+		// Initialize variables to track scaling and rotation
+		let currentScale = 0; // Track current scale value
+		let currentAngle = 0; // Track current angle value
+
+		// Update mouse position on the 'mousemove' event
+		window.addEventListener('mousemove', (e) => {
+			mouse.x = e.x;
+			mouse.y = e.y;
+		});
+
+		// Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
+		const speed = 0.75;
+
+		// Initialize an array to store the positions of the trailing circles
+		let { trail, trailElements } = createTrailElements(4);
+
+
+
+		// Start animation
+		const tick = () => {
+			// MOVE
+			// Calculate circle movement based on mouse position and smoothing
+			const translateTransform = mouseMove(circle, mouse, speed);
+
+			// SQUEEZE
+			// 1. Calculate the change in mouse position (deltaMouse)
+			let deltaMouseY;
+			let deltaMouseX;
+			let mouseVelocity;
+			let scaleTransform;
+			({ deltaMouseY, deltaMouseX, mouseVelocity, scaleTransform, currentScale } = squeeze(mouse, previousMouse, currentScale, speed));
+
+			// ROTATE
+			// 1. Calculate the angle using the atan2 function
+			let targetOriginX;
+			let targetOriginY;
+			let rotateTransform;
+			({ targetOriginX, targetOriginY, rotateTransform, currentAngle } = updateRotation(deltaMouseY, deltaMouseX, mouseVelocity, currentAngle, mouse, circle));
+
+			let originX = 50;
+			let originY = 50;
+
+			// 4. Smoothly update the transformation origin, so it stretches 'properly'
+			// Use lerp to smoothly change the transformation origin
+			({ originX, originY } = updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, circleElement));
+
+			// Apply all transformations to the circle element in a specific order: translate -> rotate -> scale
+			circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
+
+			// Update the positions of the trailing circles
+			updateTrail(circle, trail, trailElements);
+
+			// Request the next frame to continue the animation
+			window.requestAnimationFrame(tick);
+		};
+
+		// Start the animation loop
+		tick();
+	};
+};
+
+
+function updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, circleElement) {
+	const lerpSpeed = 0.05; // adjust this value to change the speed of the transition
+	originX += (targetOriginX - originX) * lerpSpeed;
+	originY += (targetOriginY - originY) * lerpSpeed;
+
+	// Set transformation origin
+	circleElement.style.transformOrigin = `${originX}% ${originY}%`;
+	return { originX, originY };
+}
+
+function updateRotation(deltaMouseY, deltaMouseX, mouseVelocity, currentAngle, mouse, circle) {
+	const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
+	// 2. Check for a threshold to reduce shakiness at low mouse velocity
+	if (mouseVelocity > 20) {
+		currentAngle = angle;
+	}
+	// 3. Create a transformation string for rotation
+	const rotateTransform = `rotate(${currentAngle}deg)`;
+
+	// Calculate target transformation origin
+	const targetOriginX = mouse.x < circle.x ? 100 : 0;
+	const targetOriginY = mouse.y < circle.y ? 100 : 0;
+	return { targetOriginX, targetOriginY, rotateTransform, currentAngle };
+}
+
+function squeeze(mouse, previousMouse, currentScale, speed) {
+	const deltaMouseX = mouse.x - previousMouse.x;
+	const deltaMouseY = mouse.y - previousMouse.y;
+	// Update previous mouse position for the next frame
+	previousMouse.x = mouse.x;
+	previousMouse.y = mouse.y;
+	// 2. Calculate mouse velocity using Pythagorean theorem and adjust speed
+	const mouseVelocity = Math.min(Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4, 150);
+	// 3. Convert mouse velocity to a value in the range [0, 1.25]
+	const scaleValue = (mouseVelocity / 150) * 1.05;
+	// 4. Smoothly update the current scale
+	currentScale += (scaleValue - currentScale) * speed;
+	// 5. Create a transformation string for scaling
+	const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
+	return { deltaMouseY, deltaMouseX, mouseVelocity, scaleTransform, currentScale };
+}
+
+function mouseMove(circle, mouse, speed) {
+	circle.x += (mouse.x - circle.x) * speed;
+	circle.y += (mouse.y - circle.y) * speed;
+	// Create a transformation string for cursor translation
+	const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
+	return translateTransform;
+}
+
+function createTrailElements(length) {
+	const trail = Array.from({ length }, () => ({ x: 0, y: 0 }));
+
+	// Create an array of elements for the trailing circles
+	const trailElements = trail.map((_, i) => {
+		const el = document.createElement('div');
+		el.classList.add('trail');
+
+		// Set the initial size of the element based on its index
+		const size = 14 - i * 1.5;
+		el.style.width = `${size}px`;
+		el.style.height = `${size}px`;
+
+		document.body.appendChild(el);
+		return el;
+	});
+
+	// Return both the trail and trailElements arrays
+	return { trail, trailElements };
+}
+
+function updateTrail(circle, trail, trailElements) {
+	// Shift all positions in the trail array to the next position
+	for (let i = trail.length - 1; i > 0; i--) {
+		trail[i].x = trail[i - 1].x;
+		trail[i].y = trail[i - 1].y;
+	}
+
+	// The first position in the trail directly follows the circle
+	trail[0].x = circle.x;
+	trail[0].y = circle.y;
+
+	// Update the position of the trailing circle elements
+	for (let i = 0; i < trail.length; i++) {
+		const el = trailElements[i];
+		const size = parseFloat(el.style.width);
+		el.style.transform = `translate(${trail[i].x - size / 2}px, ${trail[i].y - size / 2}px)`;
+	}
+}
+
+// // Call updateTrail more frequently
+// function animate(circle, trail, trailElements) {
+// 	updateTrail(circle, trail, trailElements);
+// 	requestAnimationFrame(() => animate(circle, trail, trailElements));
+// }
+
+// // Start the animation
+// const { trail, trailElements } = createTrailElements(10);
+// const circle = { x: 100, y: 100 }; // Replace with your actual circle
+// animate(circle, trail, trailElements);

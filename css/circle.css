@@ -1,0 +1,32 @@
+.circle {
+	--circle-size: 20px;
+	position: fixed;
+	width: var(--circle-size);
+	height: var(--circle-size);
+	border: 1px solid black;
+	background-color: #2ac2e4;
+	border-radius: 100%;
+	pointer-events: none;
+	top: calc(var(--circle-size) / 2 * -1);
+	left: calc(var(--circle-size) / 2 * -1);
+}
+.trail {
+	position: absolute;
+	transform-origin: center;
+	top: 0;
+	left: 0;
+	opacity: 0.45;
+	background-color: #2ac2e4;
+	border-radius: 100%;
+	pointer-events: none; /* This makes the elements not interfere with mouse events */
+}
+
+/* .circle-trail {
+	position: absolute;
+	/* border: 1px solid black; */
+	background-color: #2ac2e4;
+	border-radius: 100%;
+	/* pointer-events: none; */
+	top: 0;
+	left: 0;
+} */
