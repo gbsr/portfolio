@@ -99,7 +99,7 @@
 }
 
 .portfolio-title {
-	margin-top: -4rem;
+	margin-top: 2rem;
 	font-weight: bolder;
 	font-size: calc(3rem + 0.2vw);
 	color: var(--brand-color-accent);
@@ -109,8 +109,19 @@
 	border-radius: 10px;
 	padding-bottom: 4rem;
 }
+.card-games {
+	display: grid;
+	height: 180px;
+	margin: 0 auto;
+	padding-right: 5rem;
+	padding-top: 2rem;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 1rem; /* adjust as needed */
+}
 
-.card > a {
+.card > a,
+.card-games > a {
 	margin: auto auto;
 }
 
@@ -118,6 +129,13 @@
 	transition: 0.5s;
 	max-width: 380px;
 	margin-right: 20px;
+	border-radius: 20px;
+	border: 1px solid rgba(100, 99, 99, 0.281);
+}
+.screenshot-game {
+	transition: 0.5s;
+	max-width: 180px;
+	margin: 0.1rem;
 	border-radius: 20px;
 	border: 1px solid rgba(100, 99, 99, 0.281);
 }
