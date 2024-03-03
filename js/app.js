@@ -146,8 +146,13 @@ window.onload = function () {
 	});
 };
 
-// run after page load, and only if no touchdevice.
+const circleElement = document.querySelector('.circle');
 window.onload = function () {
+	if (('ontouchstart' in window)) {
+		circleElement.style.display = 'none';
+	}
+
+	// run after page load, and only if no touchdevice.
 	if (!('ontouchstart' in window)) {
 		document.body.style.cursor = 'none';
 
@@ -160,7 +165,6 @@ window.onload = function () {
 		console.clear();
 
 		// Select the circle element
-		const circleElement = document.querySelector('.circle');
 
 		// Create objects to track mouse position and custom cursor position
 		const mouse = { x: 0, y: 0 }; // Track current mouse position
@@ -185,8 +189,27 @@ window.onload = function () {
 
 
 
+		const links = document.querySelectorAll('a');
+		links.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
+				trailElements.forEach((el) => {
+					el.style.backgroundColor = 'rgb(1, 255, 85)';
+				});
+			});
+
+			link.addEventListener('mouseleave', () => {
+				circleElement.style.backgroundColor = '#2ac2e4';
+				trailElements.forEach((el) => {
+					el.style.backgroundColor = '#2ac2e4';
+				});
+			});
+		});
+
 		// Start animation
 		const tick = () => {
+
+
 			// MOVE
 			// Calculate circle movement based on mouse position and smoothing
 			const translateTransform = mouseMove(circle, mouse, speed);
@@ -318,6 +341,7 @@ function updateTrail(circle, trail, trailElements) {
 		el.style.transform = `translate(${trail[i].x - size / 2}px, ${trail[i].y - size / 2}px)`;
 	}
 }
+
 
 // // Call updateTrail more frequently
 // function animate(circle, trail, trailElements) {

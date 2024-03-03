@@ -9,8 +9,10 @@
 	pointer-events: none;
 	top: calc(var(--circle-size) / 2 * -1);
 	left: calc(var(--circle-size) / 2 * -1);
+	z-index: 1000;
 }
 .trail {
+	z-index: 1000;
 	position: absolute;
 	transform-origin: center;
 	top: 0;

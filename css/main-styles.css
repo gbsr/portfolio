@@ -45,6 +45,7 @@ body {
 a {
 	text-decoration: none;
 	color: var(--brand-font-color);
+	cursor: none;
 }
 
 a:hover {
@@ -85,14 +86,10 @@ footer {
 	/* width: 150%; */
 
 	/* background-color: #fcfcfc; */
+	max-width: 1000px;
+	margin: auto;
 }
 
-.section-text {
-	/* transform: rotate(-1deg) translateX(4%) translateY(-2.25rem); */
-	width: 76vw;
-
-	margin: 0 auto;
-}
 .logo {
 	max-width: 100%;
 }
@@ -136,7 +133,7 @@ footer {
 }
 
 h1 {
-	font-size: var(--size-fluid-7);
+	font-size: var(--size-fluid-6);
 	padding: 0;
 	margin: 0;
 	padding-bottom: 4rem;
@@ -156,7 +153,8 @@ h3 {
 }
 
 p {
-	font-size: var(--font-size-fluid-1);
+	font-size: var(--font-size-fluid-2);
+	font-size: calc(2rem + 0.1vw);
 }
 
 footer {

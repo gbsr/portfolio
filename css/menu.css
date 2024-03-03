@@ -19,7 +19,7 @@ li:hover {
 }
 @media (max-width: 600px) {
 	li > a {
-		font-size: var(--font-size-fluid-1) !important;
+		font-size: var(--font-size-fluid-2) !important;
 	}
 }
 .menu {
@@ -61,12 +61,15 @@ li:hover {
 }
 .menu-link {
 	position: relative;
+	line-height: 1;
 }
 
 .menu-link:hover {
 	padding-inline: 4px;
+	height: var(--size-fluid-4) !important;
 	transition: var(--brand-transition-time);
-	outline: 1px solid pink;
+	border: 1px solid pink;
+	box-sizing: border-box;
 }
 
 .menu-link .cross {
