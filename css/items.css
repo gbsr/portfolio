@@ -109,15 +109,20 @@
 	border-radius: 10px;
 	padding-bottom: 4rem;
 }
+
 .card-games {
 	display: grid;
-	height: 180px;
-	margin: 0 auto;
 	padding-right: 5rem;
 	padding-top: 2rem;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	gap: 1rem; /* adjust as needed */
+}
+
+.card-span {
+	display: inline-block;
+	font-size: calc(1.25rem + 0.25vw);
+	transform: translateY(-2rem);
 }
 
 .card > a,
@@ -134,7 +139,7 @@
 }
 .screenshot-game {
 	transition: 0.5s;
-	max-width: 180px;
+	max-width: 140px;
 	margin: 0.1rem;
 	border-radius: 20px;
 	border: 1px solid rgba(100, 99, 99, 0.281);
@@ -143,6 +148,11 @@
 .description-wrapper,
 .portfolio-title {
 	flex: 1;
+}
+
+.description-wrapper-games {
+	display: flex;
+	flex-direction: column;
 }
 
 @media (max-width: 760) {
