@@ -144,10 +144,10 @@ window.onload = function () {
 			item.style.transform = "";
 		});
 	});
-};
 
-const circleElement = document.querySelector('.circle');
-window.onload = function () {
+
+	const circleElement = document.querySelector('.circle');
+
 	if (('ontouchstart' in window)) {
 		circleElement.style.display = 'none';
 	}
