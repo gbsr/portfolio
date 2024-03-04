@@ -121,6 +121,33 @@ function updateProfileTransform(speed) {
 	animate();
 }
 
+const form = document.querySelector('form');
+const modal = document.querySelector('#myModal');
+const closeBtn = document.querySelector('.close');
+
+form.addEventListener('submit', function (event) {
+	event.preventDefault(); // Prevent the form from submitting normally
+
+	// Show the modal
+	modal.style.visibility = 'visible';
+	modal.style.height = '100%';
+	modal.style.width = '100%';
+	modal.style.opacity = '1';
+
+	// Automatically close the modal after 3 seconds
+	setTimeout(function () {
+		// Hide the modal
+		modal.style.opacity = '0';
+		modal.style.height = '0%';
+		modal.style.width = '0%';
+		setTimeout(() => {
+			modal.style.visibility = 'hidden';
+		}, 500); // Delay visibility to after the transition
+
+		// Redirect to the homepage
+		window.location.href = '/';
+	}, 3000);
+});
 /**
  * Adds mouseover and mouseout event listeners to portfolio items
  * to add a 3D transform on mouseover and remove it on mouseout.
@@ -128,6 +155,10 @@ function updateProfileTransform(speed) {
  * and a slight scale increase.
  */
 window.onload = function () {
+	// fade in page
+	document.body.classList.add('visible');
+	console.log('fading in');
+
 	const portfolioItems = document.querySelectorAll(".portfolio-item");
 
 	portfolioItems.forEach((item, index) => {
@@ -155,11 +186,11 @@ window.onload = function () {
 	*/
 	const aboutMe = document.querySelector(".about-content");
 	aboutMe.addEventListener("mousemove", function (e) {
-		const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-		const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+		const xAxis = (window.innerWidth / 2 - e.pageX) / 75;
+		const yAxis = (window.innerHeight / 2 - e.pageY) / 75;
 		aboutMe.style.transition = "transform 0.5s ease, box-shadow 0.5s ease";
 		aboutMe.style.transform = `perspective(1500px) rotateX(${yAxis}deg) rotateY(${xAxis}deg)`;
-		aboutMe.style.boxShadow = "0px 0px 20px rgba(0, 0, 0, 0.3)";
+		aboutMe.style.boxShadow = "0px 0px 40px rgba(0, 0, 0, 0.08)";
 	});
 
 	aboutMe.addEventListener("mouseout", function () {
@@ -212,6 +243,8 @@ window.onload = function () {
 
 
 		const links = document.querySelectorAll('a');
+		const button = document.querySelector('button'); // Use querySelector if you have only one button
+
 		links.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
 				circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
@@ -227,6 +260,22 @@ window.onload = function () {
 				});
 			});
 		});
+
+		// Add event listeners to the button
+		button.addEventListener('mouseenter', () => {
+			circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
+			trailElements.forEach((el) => {
+				el.style.backgroundColor = 'rgb(1, 255, 85)';
+			});
+		});
+
+		button.addEventListener('mouseleave', () => {
+			circleElement.style.backgroundColor = '#2ac2e4';
+			trailElements.forEach((el) => {
+				el.style.backgroundColor = '#2ac2e4';
+			});
+		});
+
 
 		// Start animation
 		const tick = () => {

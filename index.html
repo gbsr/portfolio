@@ -23,7 +23,7 @@
 		<title>Anders Hofsten | Frontend Developer</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	</head>
-	<body>
+	<body class="fade-in">
 		<header>
 			<div class="logo">Anders Hofsten | Frontend Developer</div>
 			<ul class="menu">
@@ -44,7 +44,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#about">About</a>
+					<a href="#about-wrapper">About</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -56,7 +56,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#">Contact</a>
+					<a href="#contact-section">Contact</a>
 					<div class="underline"></div>
 					<div class="cross">
 						<div class="vertical"></div>
@@ -96,9 +96,13 @@
 			</div>
 		</section>
 
-		<section class="section2" id="portfolio">
+		<div class="spacer"></div>
+		<section class="section2">
 			<section class="section-text">
-				<h1 class="portfolio">Portfolio</h1>
+				<h1 class="portfolio">
+					<div class="anchor-point" id="portfolio">#</div>
+					Portfolio
+				</h1>
 
 				<div class="portfolio-content">
 					<div class="portfolio-item" id="blog">
@@ -294,9 +298,12 @@
 		</section>
 		<div class="spacer"></div>
 		<section class="section-about">
-			<div class="about-wrapper" id="about-wrapper">
+			<div class="about-wrapper">
 				<div class="about-content">
-					<h1 class="about">About me</h1>
+					<h1 class="about">
+						<div class="anchor-point" id="about-wrapper">#</div>
+						About me
+					</h1>
 					<div class="about-item">
 						<div class="description-wrapper">
 							<p id="about">
@@ -312,6 +319,54 @@
 								<code class="language-javascript"> const age = today.getFullYear() - birthYear;</code>
 							</div>
 							<p>years old.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="spacer"></div>
+		<section class="section-contact">
+			<div class="contact-wrapper" id="contact-wrapper">
+				<div class="contact-content">
+					<h1 class="contact">
+						<div class="anchor-point" id="contact-section">#</div>
+						Contact
+					</h1>
+					<div class="contact-item">
+						<div class="description-wrapper">
+							<p>Questions? Ideas? Got a cool project that needs something?</p>
+							<p>
+								Whether you're a fellow developer, a potential client, or just want to geek out about
+								code, I'm eager to chat :)
+							</p>
+							<div class="form-wrapper">
+								<form action="/submit" method="POST" class="form-flex">
+									<div>
+										<div class="form-group">
+											<label for="name">Name:</label>
+											<input type="text" id="name" name="name" required />
+										</div>
+										<div class="form-group">
+											<label for="email">Email:</label>
+											<input type="email" id="email" name="email" required />
+										</div>
+										<div class="form-group">
+											<label for="message">Message:</label>
+											<textarea id="message" name="message" required></textarea>
+										</div>
+										<div class="form-group">
+											<div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+										</div>
+									</div>
+									<button type="submit">Submit</button>
+									<div id="myModal" class="modal">
+										<div class="modal-content">
+											<span class="close">&times;</span>
+											<p>Thanks for reaching out. I'll get back to you asap!</p>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -351,7 +406,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#about" aria.label="Link to About section">About</a>
+					<a href="#about-wrapper" aria.label="Link to About section">About</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -363,7 +418,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#" aria.label="Link to Contact section">Contact</a>
+					<a href="#contact-section" aria.label="Link to Contact section">Contact</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>

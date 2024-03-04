@@ -28,12 +28,21 @@ html {
 	overflow: hidden;
 }
 
+.fade-in {
+	opacity: 0;
+	transition: opacity 1.5s;
+}
+
+.fade-in.visible {
+	opacity: 1;
+}
+
 body {
 	scroll-behavior: smooth;
 	/* scroll-snap-type: y mandatory; */
 	overflow-y: scroll;
 	overflow-x: hidden;
-	scroll-padding-top: 8rem;
+	scroll-padding-top: 14rem;
 
 	margin: 0;
 	padding: 0;

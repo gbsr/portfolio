@@ -21,6 +21,132 @@
 	height: 80vh;
 }
 
+.about,
+.portfolio,
+.contact {
+	display: flex;
+	flex-direction: row;
+}
+.anchor-point {
+	color: #2ac2e4;
+	/* transform: translateY(7rem) translateX(-3rem); */
+	font-size: var(--size-fluid-6);
+	/* background: transparent; */
+}
+
+.contact-content {
+	width: 90%;
+	margin: 0 auto;
+	height: 100vh;
+	max-width: 1000px;
+}
+
+.form-wrapper {
+	max-width: 1000px;
+}
+
+.form-group {
+	padding-block: 1rem;
+	max-width: 1000px;
+	display: flex;
+	flex-direction: column;
+	font-size: calc(2rem + 0.1vh);
+}
+
+form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+label {
+	padding-bottom: 1.35rem;
+}
+
+input,
+#message {
+	background-color: #c5c8c86b;
+	height: 2rem;
+	padding: 0.35rem;
+	border-radius: 10px;
+	caret-color: #282928;
+	font-size: calc(2rem + 0.1vh);
+	color: #282928;
+	padding: 1.35rem;
+	transition: 0.5s;
+}
+
+input:hover,
+input:focus,
+#message:hover,
+#message:focus {
+	border-radius: 10px;
+	/* transform: scale(1.02); */
+	transition: 0.5s;
+	box-shadow: 0px 0px 40px #0ca3dae2;
+}
+
+button {
+	align-self: flex-end;
+	width: 10rem;
+	font-size: calc(2rem + 0.1vh);
+	padding: 1.35rem;
+	border-radius: 10px;
+	background-color: #2ac2e4;
+	color: #282928;
+	cursor: none;
+	transition: 0.5s;
+}
+
+button:hover,
+button:focus {
+	transition: 0.5s;
+	background-color: #c8eaf1;
+	box-shadow: 0px 0px 40px #0ca3dae2;
+}
+
+.modal {
+	visibility: hidden; /* Hidden by default */
+	opacity: 0;
+	transition: visibility 0s 0.5s, opacity 0.5s linear; /* Animate visibility after opacity */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 0%;
+	height: 0%;
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+.close {
+	transition: 0.5s;
+	opacity: 1;
+	color: #aaa;
+	float: right;
+	font-size: 42px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 .spacer {
 	height: 20rem;
 }
