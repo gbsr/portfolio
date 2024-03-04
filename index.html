@@ -292,20 +292,20 @@
 				</div>
 			</section>
 		</section>
+		<div class="spacer"></div>
 		<section class="section-about">
-			<div id="about-wrapper">
+			<div class="about-wrapper" id="about-wrapper">
 				<div class="about-content">
 					<h1 class="about">About me</h1>
-					<div class="about-item" id="about">
+					<div class="about-item">
 						<div class="description-wrapper">
-							<p>
+							<p id="about">
 								When not sitting in front of the computer and trying to make (or look at) cool web
 								things, I tend to spend most of my time either with my friends or out walking or biking.
 								I started studying Frontend Development in late 2023, and was working as a contract
 								technical game audio designer before that, while also working extra as a stagehand.
 							</p>
-							<p>I am based in Gothenburg, Sweden</p>
-							<p>I am currently</p>
+							<p>I am based in Gothenburg, Sweden, and I am currently</p>
 							<div class="code-container">
 								<code class="language-javascript"> const today = new Date(); </code>
 								<code class="language-javascript"> const birthYear = 1980; </code>
@@ -320,10 +320,16 @@
 		<footer>
 			<div class="logo bottom">
 				Anders Hofsten
-				<a href="https://www.linkedin.com/in/ahofsten/" target="_blank">
+				<a
+					href="https://www.linkedin.com/in/ahofsten/"
+					target="_blank"
+					aria-label="Anders Hofsten's LinkedIn profile">
 					<i class="fab fa-linkedin"></i>
 				</a>
-				<a href="https://twitter.com/soundsbyhofsten" target="_blank">
+				<a
+					href="https://twitter.com/soundsbyhofsten"
+					target="_blank"
+					aria.label="Anders Hofsten's Twitter profile">
 					<i class="fab fa-twitter"></i>
 				</a>
 			</div>
@@ -333,7 +339,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#portfolio">Portfolio</a>
+					<a href="#portfolio" aria-label="Link to Portfolio section">Portfolio</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -345,7 +351,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#about">About</a>
+					<a href="#about" aria.label="Link to About section">About</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -357,7 +363,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#">Contact</a>
+					<a href="#" aria.label="Link to Contact section">Contact</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -369,7 +375,12 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#">Blog</a>
+					<a
+						href="https://pushing-pixels.vercel.app/"
+						aria-label="Link to Pushing Pixels blog"
+						target="_blank"
+						>Blog</a
+					>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>

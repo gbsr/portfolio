@@ -33,6 +33,7 @@ body {
 	/* scroll-snap-type: y mandatory; */
 	overflow-y: scroll;
 	overflow-x: hidden;
+	scroll-padding-top: 8rem;
 
 	margin: 0;
 	padding: 0;
@@ -99,8 +100,6 @@ code > .language-javascript {
 	/* padding: 4rem; */
 	margin: 0 auto;
 	max-width: 1000px;
-	width: 100%;
-	outline: 50px solid white;
 }
 
 .logo {

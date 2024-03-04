@@ -19,10 +19,11 @@
 .about-wrapper {
 	width: 90%;
 	margin: 0 auto;
+	height: 80vh;
 }
 
 .spacer {
-	height: 4rem;
+	height: 20rem;
 }
 .code-container {
 	display: flex;
