@@ -2,7 +2,6 @@ footer {
 	position: fixed;
 	padding-inline: 1.5rem;
 	backdrop-filter: blur(20px);
-	border: 4px solid transparent;
 	bottom: 0;
 	width: 100vw;
 	background-color: var(--brand-color-accent);
