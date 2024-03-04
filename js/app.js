@@ -41,6 +41,7 @@ let observer = new IntersectionObserver(function (entries) {
 	}
 });
 
+
 calculateCorrectViewportUnits();
 
 // Start observing the header
@@ -80,6 +81,7 @@ function calculateCorrectViewportUnits() {
 		section2.style.height = calculatedHeight;
 	}
 }
+
 
 function updateProfileTransform(speed) {
 	// declaring variables
@@ -145,6 +147,26 @@ window.onload = function () {
 		});
 	});
 
+	/**
+	 * Adds mousemove and mouseout event listeners to the aboutMe element
+	 * to add a 3D transform on mousemove that rotates based on the mouse position,
+	 * as well as a box shadow and outline.
+	 * On mouseout it removes the transform, shadow, and outline.
+	*/
+	const aboutMe = document.querySelector(".about-content");
+	aboutMe.addEventListener("mousemove", function (e) {
+		const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+		const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+		aboutMe.style.transition = "transform 0.5s ease, box-shadow 0.5s ease";
+		aboutMe.style.transform = `perspective(1500px) rotateX(${yAxis}deg) rotateY(${xAxis}deg)`;
+		aboutMe.style.boxShadow = "0px 0px 20px rgba(0, 0, 0, 0.3)";
+	});
+
+	aboutMe.addEventListener("mouseout", function () {
+		aboutMe.style.transition = "transform 0.5s ease, box-shadow 0.5s ease";
+		aboutMe.style.transform = "";
+		aboutMe.style.boxShadow = "";
+	});
 
 	const circleElement = document.querySelector('.circle');
 
@@ -341,15 +363,3 @@ function updateTrail(circle, trail, trailElements) {
 		el.style.transform = `translate(${trail[i].x - size / 2}px, ${trail[i].y - size / 2}px)`;
 	}
 }
-
-
-// // Call updateTrail more frequently
-// function animate(circle, trail, trailElements) {
-// 	updateTrail(circle, trail, trailElements);
-// 	requestAnimationFrame(() => animate(circle, trail, trailElements));
-// }
-
-// // Start the animation
-// const { trail, trailElements } = createTrailElements(10);
-// const circle = { x: 100, y: 100 }; // Replace with your actual circle
-// animate(circle, trail, trailElements);

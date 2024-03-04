@@ -23,7 +23,7 @@
 	--brand-transition-time: 150ms;
 }
 html {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	overflow: hidden;
 }
@@ -33,6 +33,7 @@ body {
 	/* scroll-snap-type: y mandatory; */
 	overflow-y: scroll;
 	overflow-x: hidden;
+
 	margin: 0;
 	padding: 0;
 	height: 100vh;
@@ -68,8 +69,7 @@ footer {
 }
 
 .hero,
-.section1,
-.section2 {
+.section1 {
 	scroll-snap-align: start;
 	height: 100vh;
 }
@@ -87,7 +87,20 @@ footer {
 
 	/* background-color: #fcfcfc; */
 	max-width: 1000px;
-	margin: auto;
+	margin: 0 auto;
+	width: 90%;
+}
+
+code > .language-javascript {
+	font-size: calc(1.5rem - 0.2vw);
+}
+
+.section-about {
+	/* padding: 4rem; */
+	margin: 0 auto;
+	max-width: 1000px;
+	width: 100%;
+	outline: 50px solid white;
 }
 
 .logo {
@@ -100,17 +113,6 @@ footer {
 		align-items: flex-start;
 		justify-content: space-between;
 	}
-}
-
-.spacer {
-	bottom: var(--gap);
-	width: 100%;
-	/* margin: 0 var(--gap); */
-	padding: var(--gap);
-	bottom: 0;
-	background-color: var(--brand-color-accent-semi);
-	border-top: 1px solid rgba(0, 0, 0, 0.295);
-	z-index: 1;
 }
 
 .bold {
@@ -141,13 +143,13 @@ h1 {
 }
 
 h2 {
-	font-size: var(--size-fluid-3);
+	font-size: var(--size-fluid-4);
 	padding: 0;
 	margin: 0;
 }
 
 h3 {
-	font-size: var(--size-fluid-2);
+	font-size: var(--size-fluid-3);
 	padding: 0;
 	margin: 0;
 }
@@ -159,8 +161,8 @@ p {
 
 footer {
 	position: fixed;
-	padding: 0;
-	padding-inline: 1.5rem;
+	padding: 10px;
+	padding-inline: 1rem;
 	opacity: 0.92;
 	backdrop-filter: blur(20px);
 	bottom: 0;
@@ -178,12 +180,6 @@ footer a:hover {
 header,
 footer {
 	transition: top 0.85s ease, bottom 0.25s ease;
-}
-
-@media (max-width: 1000px) {
-	.section-text {
-		width: 100vw;
-	}
 }
 
 @media (max-width: 600px) {

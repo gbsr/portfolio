@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="css/items.css" />
 		<link rel="stylesheet" href="css/menu.css" />
 		<link rel="stylesheet" href="css/circle.css" />
+		<link rel="stylesheet" href="css/prism.css" />
 		<script type="module" src="js/app.js"></script>
 		<script type="module" src="js/helpers.js"></script>
 		<title>Anders Hofsten | Frontend Developer</title>
@@ -43,7 +44,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#">About</a>
+					<a href="#about">About</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -291,6 +292,31 @@
 				</div>
 			</section>
 		</section>
+		<section class="section-about">
+			<div id="about-wrapper">
+				<div class="about-content">
+					<h1 class="about">About me</h1>
+					<div class="about-item" id="about">
+						<div class="description-wrapper">
+							<p>
+								When not sitting in front of the computer and trying to make (or look at) cool web
+								things, I tend to spend most of my time either with my friends or out walking or biking.
+								I started studying Frontend Development in late 2023, and was working as a contract
+								technical game audio designer before that, while also working extra as a stagehand.
+							</p>
+							<p>I am based in Gothenburg, Sweden</p>
+							<p>I am currently</p>
+							<div class="code-container">
+								<code class="language-javascript"> const today = new Date(); </code>
+								<code class="language-javascript"> const birthYear = 1980; </code>
+								<code class="language-javascript"> const age = today.getFullYear() - birthYear;</code>
+							</div>
+							<p>years old.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 		<footer>
 			<div class="logo bottom">
 				Anders Hofsten
@@ -319,7 +345,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a href="#">About</a>
+					<a href="#about">About</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -332,7 +358,6 @@
 						<div class="horizontal"></div>
 					</div>
 					<a href="#">Contact</a>
-					<div class="underline"></div>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
@@ -352,5 +377,6 @@
 				</li>
 			</ul>
 		</footer>
+		<script src="./js/prism.js"></script>
 	</body>
 </html>

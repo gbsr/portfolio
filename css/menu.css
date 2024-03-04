@@ -21,15 +21,19 @@ li:hover {
 	li > a {
 		font-size: var(--font-size-fluid-2) !important;
 	}
+	.menu {
+		flex-direction: column;
+	}
 }
 .menu {
 	display: flex;
 	flex: 0 0 auto;
+	flex-wrap: wrap;
 	height: 30px;
 	justify-content: flex-end;
 	gap: 10px;
-	padding-right: var(--gap);
 	margin-right: var(--gap);
+	width: 57%;
 }
 
 .underline {
