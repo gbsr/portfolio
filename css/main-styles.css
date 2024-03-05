@@ -59,13 +59,14 @@ a {
 	cursor: none;
 }
 
-a:hover {
+a:hover,
+a:focus {
 	color: var(--brand-font-accent);
 }
 
 header,
 footer {
-	padding: 1.5rem;
+	padding: 1.6rem;
 	display: flex;
 	justify-content: space-between;
 	background-color: var(--brand-background-color);
