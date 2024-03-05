@@ -27,6 +27,22 @@ html {
 	padding: 0;
 	overflow: hidden;
 }
+i.fa-linkedin {
+	padding-inline: 1rem;
+}
+i,
+i:hover,
+i:focus {
+	transition: 0.2s;
+	transform: scale(1.2);
+	opacity: 1;
+}
+.name:hover,
+.name:focus {
+	transition: 0.2s;
+	transform: scale(1.05);
+	opacity: 1;
+}
 
 .fade-in {
 	opacity: 0;
@@ -114,6 +130,9 @@ code > .language-javascript {
 
 .logo {
 	max-width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 
 @media (max-width: 600px) {
