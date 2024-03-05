@@ -122,6 +122,7 @@ function updateProfileTransform(speed) {
 }
 
 const modal = document.querySelector('#myModal');
+const modalError = document.querySelector('#myModal-error');
 const closeBtn = document.querySelector('.close');
 
 
@@ -133,7 +134,7 @@ const closeBtn = document.querySelector('.close');
  */
 
 
-let recaptchaRendered = false;
+// let recaptchaRendered = false;
 
 window.onload = function () {
 	console.log('window.onload called');
@@ -142,31 +143,32 @@ window.onload = function () {
 	document.body.classList.add('visible');
 	console.log('fading in');
 
-	// only render captcha if it hasn't already been rendered
-	if (!recaptchaRendered) {
-		console.log('rendering reCAPTCHA');
-		grecaptcha.render('recaptcha', {
-			'sitekey': '6Lc3-YopAAAAAJoL_1CdojBQbuYDc2pdp2pz9wZC',
+	// // // only render captcha if it hasn't already been rendered
+	// if (!recaptchaRendered) {
+	// 	console.log('rendering reCAPTCHA');
+	// 	grecaptcha.render('recaptcha', {
+	// 		'sitekey': '6Lc3-YopAAAAAJoL_1CdojBQbuYDc2pdp2pz9wZC',
 
-			'callback': function () {
-				// When the user completes the reCAPTCHA, get the response
-				let response = grecaptcha.getResponse();
+	// 		'callback': function () {
+	// 			// When the user completes the reCAPTCHA, get the response
+	// 			let response = grecaptcha.getResponse();
 
-				// Check if the response is not empty
-				if (response) {
-					// Set the response as the value of the hidden input field
-					document.getElementById('g-recaptcha-response').value = response;
-				} else {
-					// The reCAPTCHA has not been completed or has expired, handle this case
-					console.log('reCAPTCHA not completed or expired');
-				}
-			}
-		});
-		recaptchaRendered = true;
+	// 			// Check if the response is not empty
+	// 			if (response) {
+	// 				// Set the response as the value of the hidden input field
+	// 				console.log('response' + response);
+	// 				document.getElementById('g-recaptcha-response').value = response;
+	// 			} else {
+	// 				// The reCAPTCHA has not been completed or has expired, handle this case
+	// 				console.log('reCAPTCHA not completed or expired');
+	// 			}
+	// 		}
+	// 	});
+	// 	recaptchaRendered = true;
 
-	} else {
-		console.log('reCAPTCHA already rendered');
-	}
+	// } else {
+	// 	console.log('reCAPTCHA already rendered');
+	// }
 	const portfolioItems = document.querySelectorAll(".portfolio-item");
 
 	portfolioItems.forEach((item, index) => {
@@ -362,35 +364,61 @@ window.onload = function () {
 };
 
 // Get the reCAPTCHA response when the form is submitted
-document.getElementById('form').addEventListener('submit', function (event) {
-	event.preventDefault(); // Prevent the form from submitting normally
+/**
+ * Adds a submit event listener to the form that submits the form via AJAX.
+ * Shows a success or error modal based on the response.
+ * After 3 seconds redirects to another page on success.
+ */
+const form = document.getElementById('form');
+const myModal = document.getElementById('myModal');
+const myModalError = document.getElementById('myModal-error');
 
-	let response = grecaptcha.getResponse();
+form.addEventListener('submit', function (e) {
+	e.preventDefault();
+	const formData = new FormData(form);
+	const object = Object.fromEntries(formData);
+	const json = JSON.stringify(object);
 
-	// Add the response to your form
-	let form = document.getElementById('form');
-	let input = document.createElement('input');
-	input.type = 'hidden';
-	input.name = 'g-recaptcha-response';
-	input.value = response;
-	form.appendChild(input);
-
-	// Submit the form using AJAX
-	let xhr = new XMLHttpRequest();
-	xhr.open(form.method, form.action);
-	xhr.setRequestHeader('Accept', 'application/json'); // Ensure you're expecting a JSON response
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState !== XMLHttpRequest.DONE) return;
-		if (xhr.status === 200) {
-			// Form submitted successfully, you can show a success message
-			console.log('Form submitted successfully');
-		} else {
-			// There was an error, you can handle it here
-			console.error('There was an error submitting the form:', xhr.responseText);
-		}
-	};
-	xhr.send(new FormData(form));
-
+	fetch('https://api.web3forms.com/submit', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		body: json
+	})
+		.then(async (response) => {
+			let json = await response.json();
+			if (response.status == 200) {
+				myModal.style.visibility = 'visible';
+				myModal.style.opacity = '1';
+				setTimeout(function () {
+					myModal.style.visibility = 'hidden';
+					myModal.style.opacity = '0';
+					window.location.href = '/';
+				}, 3000);
+			} else {
+				console.log(response);
+				myModalError.style.visibility = 'visible';
+				myModalError.style.opacity = '1';
+				setTimeout(function () {
+					myModalError.style.visibility = 'hidden';
+					myModalError.style.opacity = '0';
+				}, 3000);
+			}
+		})
+		.catch(error => {
+			console.log(error);
+			myModalError.style.visibility = 'visible';
+			myModalError.style.opacity = '1';
+			setTimeout(function () {
+				myModalError.style.visibility = 'hidden';
+				myModalError.style.opacity = '0';
+			}, 3000);
+		})
+		.then(function () {
+			form.reset();
+		});
 });
 function updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, circleElement) {
 	const lerpSpeed = 0.05; // adjust this value to change the speed of the transition

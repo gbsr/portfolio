@@ -23,6 +23,7 @@
 		<title>Anders Hofsten | Frontend Developer</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+		<script src="https://web3forms.com/client/script.js" async defer></script>
 	</head>
 	<body class="fade-in">
 		<header>
@@ -342,11 +343,15 @@
 							</p>
 							<div class="form-wrapper">
 								<form
-									action="https://formspree.io/f/mdoqdnjo"
+									action="https://api.web3forms.com/submit"
 									method="POST"
 									class="form-flex"
 									id="form">
 									<div>
+										<input
+											type="hidden"
+											name="access_key"
+											value="18552c96-7ee3-4118-9663-12992c916c9b" />
 										<div class="form-group">
 											<label for="name">Name:</label>
 											<input type="text" id="name" name="name" required />
@@ -360,17 +365,21 @@
 											<textarea id="message" name="message" required></textarea>
 										</div>
 										<div class="form-group">
-											<div
-												id="recaptcha"
-												data-sitekey="6Lc3-YopAAAAAJoL_1CdojBQbuYDc2pdp2pz9wZC"></div>
+											<div class="h-captcha" data-captcha="true"></div>
 										</div>
-										<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+										<!-- <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" /> -->
 									</div>
 									<button type="submit">Submit</button>
 									<div id="myModal" class="modal">
 										<div class="modal-content">
 											<span class="close">&times;</span>
 											<p>Thanks for reaching out. I'll get back to you asap!</p>
+										</div>
+									</div>
+									<div id="myModal-error" class="modal">
+										<div class="modal-content-error">
+											<span class="close">&times;</span>
+											<p>Captcha failed!</p>
 										</div>
 									</div>
 								</form>
