@@ -1,15 +1,11 @@
-/**
- * This code handles some UI interactions and animations:
- *
- * - Rotates a .turned element on hover
- * - Shows/hides header and footer based on intersection with viewport
- * - Calculates correct viewport height/width units for elements
- * - Animates profile image position based on mouse move
- * - Applies 3D transform to portfolio items on hover
- */
+
 import { getCorrectVHUnitsWidth, getCorrectVHUnitsHeight } from "./helpers.js";
 
 // rotate div
+/**
+ * Adds mouseenter and mouseleave event listeners to the element with class "turned"
+ * to rotate it 90 degrees on mouseenter and back to 0 degrees on mouseleave.
+ */
 document.querySelector(".turned").addEventListener("mouseenter", function (event) {
 	event.target.style.transform = "rotate(90deg)";
 });
@@ -20,6 +16,12 @@ document.querySelector(".turned").addEventListener("mouseleave", function (event
 	}, 350); // delay in ms
 });
 
+/**
+ * Adds an IntersectionObserver to detect when the header and footer
+ * elements intersect with the viewport. When the header is not visible,
+ * the footer is shown. When the header is visible, the footer is hidden.
+ * This allows a fixed header and footer to not overlap.
+ */
 let header = document.querySelector("header");
 let footer = document.querySelector("footer");
 
@@ -41,13 +43,19 @@ let observer = new IntersectionObserver(function (entries) {
 	}
 });
 
-
+// used to get correct units since some browsers doesn't, really
 calculateCorrectViewportUnits();
 
 // Start observing the header
 observer.observe(header);
 
 updateProfileTransform(0.025);
+/**
+ * Calculates the correct viewport height and width in vh and vw units
+ * by measuring the current viewport dimensions and setting the values
+ * on the provided elements. This allows using viewport units reliably
+ * across different browsers.
+ */
 
 function calculateCorrectViewportUnits() {
 	let body = document.querySelector("body");
@@ -83,6 +91,12 @@ function calculateCorrectViewportUnits() {
 }
 
 
+/**
+ * Smoothly moves the .profile element to track the mouse position.
+ * Listens for mousemove events and calculates target X/Y coords.
+ * Uses requestAnimationFrame to transition current position toward
+ * target position over time.
+ */
 function updateProfileTransform(speed) {
 	// declaring variables
 	let targetX = 0,
@@ -121,11 +135,6 @@ function updateProfileTransform(speed) {
 	animate();
 }
 
-const modal = document.querySelector('#myModal');
-const modalError = document.querySelector('#myModal-error');
-const closeBtn = document.querySelector('.close');
-
-
 window.onload = function () {
 	console.log('window.onload called');
 
@@ -133,11 +142,13 @@ window.onload = function () {
 	document.body.classList.add('visible');
 	console.log('fading in');
 
+
 	/**
 	 * Loops through each portfolio item, adds mouseover and mouseout event
-	 * listeners to animate the items on hover.
-	 * On mouseover, applies a random perspective transform with rotation and scale.
-	 * On mouseout, resets transform to default state.
+	 * listeners to animate item on hover.
+	 * On mouseover: Calculates random rotation and scale transform.
+	 * Applies 3D transform based on index being even/odd.
+	 * On mouseout: Removes transform.
 	 */
 	const portfolioItems = document.querySelectorAll(".portfolio-item");
 
@@ -181,10 +192,14 @@ window.onload = function () {
 
 	const circleElement = document.querySelector('.circle');
 
+	if (('ontouchstart' in window)) {
+		circleElement.style.display = 'none';
+	}
+
 	// run after page load, and only if no touchdevice.
 	if (!('ontouchstart' in window)) {
 		document.body.style.cursor = 'none';
-		circleElement.style.display = 'none';
+
 
 		// mouse pointer animation
 		/**
@@ -219,43 +234,50 @@ window.onload = function () {
 
 
 
-		const links = document.querySelectorAll('a');
-		const inputs = document.querySelectorAll('input');
-		const button = document.querySelector('button');
-		const message = document.getElementById('message');
+		/**
+		 * Adds mouseenter and mouseleave event listeners to all links and inputs
+		 * to change the circle element's background color on hover.
+		 *
+		 * When hovering over a link or input, the circle and trail turn green.
+		 * When leaving a link or input, the circle and trail turn back to default blue.
+		 */
+		const links = document.querySelectorAll("a");
+		const inputs = document.querySelectorAll("input");
+		const button = document.querySelector("button");
+		const message = document.getElementById("message");
 
 		links.forEach((link) => {
-			link.addEventListener('mouseenter', () => {
-				circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
+			link.addEventListener("mouseenter", () => {
+				circleElement.style.backgroundColor = "rgb(1, 255, 85)";
 				trailElements.forEach((el) => {
-					el.style.backgroundColor = 'rgb(1, 255, 85)';
+					el.style.backgroundColor = "rgb(1, 255, 85)";
 				});
 			});
 
-			link.addEventListener('mouseleave', () => {
-				circleElement.style.backgroundColor = '#2ac2e4';
+			link.addEventListener("mouseleave", () => {
+				circleElement.style.backgroundColor = "#2ac2e4";
 				trailElements.forEach((el) => {
-					el.style.backgroundColor = '#2ac2e4';
+					el.style.backgroundColor = "#2ac2e4";
 				});
 			});
 		});
 		inputs.forEach((input) => {
-			input.addEventListener('mouseenter', () => {
-				circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
+			input.addEventListener("mouseenter", () => {
+				circleElement.style.backgroundColor = "rgb(1, 255, 85)";
 				trailElements.forEach((el) => {
-					el.style.backgroundColor = 'rgb(1, 255, 85)';
+					el.style.backgroundColor = "rgb(1, 255, 85)";
 				});
 			});
 
-			input.addEventListener('mouseleave', () => {
-				circleElement.style.backgroundColor = '#2ac2e4';
+			input.addEventListener("mouseleave", () => {
+				circleElement.style.backgroundColor = "#2ac2e4";
 				trailElements.forEach((el) => {
-					el.style.backgroundColor = '#2ac2e4';
+					el.style.backgroundColor = "#2ac2e4";
 				});
 			});
 		});
 
-		// Add event listeners - YES I WILL CLEAN THIS UP HAHA!
+		// Add event listeners to the button
 		button.addEventListener('mouseenter', () => {
 			circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
 			trailElements.forEach((el) => {
@@ -269,7 +291,7 @@ window.onload = function () {
 				el.style.backgroundColor = '#2ac2e4';
 			});
 		});
-
+		// message
 		message.addEventListener('mouseenter', () => {
 			circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
 			trailElements.forEach((el) => {
@@ -411,17 +433,35 @@ function updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, c
 /**
  * Updates the rotation and transform origin of the circle element based on mouse movement.
  *
- * Calculates a target rotation angle and transform origin using the mouse delta positions.
- * Applies a threshold on the mouse velocity to reduce shakiness.
- * Returns the updated transform origin and rotation transform string.
+ * Calculates a new rotation angle from the mouse delta. Checks if mouse velocity is above a threshold
+ * to reduce shakiness at low velocities. Generates a rotate transform string for the new angle.
+ * Calculates target transform origin coordinates based on mouse position relative to circle.
  *
  * @param {number} deltaMouseY - Change in mouse Y position
  * @param {number} deltaMouseX - Change in mouse X position
  * @param {number} mouseVelocity - Speed of mouse movement
- * @param {number} currentAngle - Current rotation angle
- * @param {Object} mouse - Mouse position object
- * @param {HTMLElement} circle - Circle element to rotate
- * @returns {Object} - Target origin coords and rotation transform string
+ * @param {number} currentAngle - Current rotation angle of circle
+ * @param {Object} mouse - Mouse position object with x and y
+ * @param {HTMLElement} circle - The circle element to rotate
+ *
+ * @returns {Object} - Target origin x and y coords, rotate transform string, and new angle value
+ */
+
+/**
+ * Updates the rotation and transform origin of the circle element based on mouse movement.
+ *
+ * Calculates a new rotation angle from the mouse delta. Checks if mouse velocity is above a threshold
+ * to reduce shakiness at low velocities. Generates a rotate transform string for the new angle.
+ * Calculates target transform origin coordinates based on mouse position relative to circle.
+ *
+ * @param {number} deltaMouseY - Change in mouse Y position
+ * @param {number} deltaMouseX - Change in mouse X position
+ * @param {number} mouseVelocity - Speed of mouse movement
+ * @param {number} currentAngle - Current rotation angle of circle
+ * @param {Object} mouse - Mouse position object with x and y
+ * @param {HTMLElement} circle - The circle element to rotate
+ *
+ * @returns {Object} - Target origin x and y coords, rotate transform string, and new angle value
  */
 function updateRotation(deltaMouseY, deltaMouseX, mouseVelocity, currentAngle, mouse, circle) {
 	const angle = (Math.atan2(deltaMouseY, deltaMouseX) * 180) / Math.PI;
@@ -439,14 +479,11 @@ function updateRotation(deltaMouseY, deltaMouseX, mouseVelocity, currentAngle, m
 }
 
 /**
- * Calculates mouse velocity and updates scale based on mouse movement.
- * Smoothes scaling transition.
+ * Squeezes the circle element based on mouse movement.
  *
- * @param {Object} mouse - Current mouse position
- * @param {Object} previousMouse - Previous mouse position
- * @param {number} currentScale - Current scale value
- * @param {number} speed - Transition speed for smoothing
- * @returns {Object} - Mouse velocity, scale transform and updated scale
+ * Calculates mouse velocity from delta x and y. Adjusts velocity
+ * to a capped value. Maps velocity to a scale factor. Smoothes
+ * scale changes over time. Returns scale transform and updated values.
  */
 function squeeze(mouse, previousMouse, currentScale, speed) {
 	const deltaMouseX = mouse.x - previousMouse.x;
@@ -466,12 +503,13 @@ function squeeze(mouse, previousMouse, currentScale, speed) {
 }
 
 /**
- * Updates circle position based on mouse movement
+ * Updates the circle element's position based on mouse position.
  *
- * @param {Object} circle - Circle element to move
- * @param {Object} mouse - Current mouse position
- * @param {number} speed - Transition speed for circle movement
- * @returns {string} translateTransform - CSS transform for translation
+ * @param {HTMLElement} circle - The circle element to move
+ * @param {Object} mouse - The current mouse position
+ * @param {number} speed - Multiplier for how quickly to move towards mouse
+ *
+ * @returns {string} - The translation transform string
  */
 function mouseMove(circle, mouse, speed) {
 	circle.x += (mouse.x - circle.x) * speed;
@@ -482,14 +520,10 @@ function mouseMove(circle, mouse, speed) {
 }
 
 /**
- * Creates an array of trail elements by generating divs, styling them,
- * appending them to the DOM, and returning both the data array and
- * array of elements.
+ * Creates an array of trail circle elements with decreasing sizes.
  *
- * The size of each trail element is based on its index in the trail array.
- *
- * @param {number} length - Length of trail data array to generate
- * @returns {Object} - trail array and trailElements array
+ * @param {number} length - The number of trail elements to create.
+ * @returns {Object} An object with the trail data array and trailElements array.
  */
 function createTrailElements(length) {
 	const trail = Array.from({ length }, () => ({ x: 0, y: 0 }));
@@ -513,15 +547,15 @@ function createTrailElements(length) {
 }
 
 /**
- * Updates the trail array and DOM elements to match the current circle position.
+ * Updates the positions of the trail elements to follow the main circle element.
  *
- * Shifts all trail positions back by one, dropping the last position. Sets
- * the first trail position to the current circle x/y. Then translates each
- * trail DOM element to match the updated trail positions.
+ * Shifts all trail positions back one index, drops the last position, and sets
+ * the first trail position to the circle's current x/y. Then updates the transform
+ * of each trail element to move it to the new position, offset by its size.
  *
- * @param {Object} circle - The circle element
- * @param {Array} trail - Array of trail positions
- * @param {Array} trailElements - Array of trail DOM elements
+ * @param {HTMLElement} circle - The main circle element
+ * @param {Object[]} trail - Array of trail position objects
+ * @param {HTMLElement[]} trailElements - Array of trail DOM elements
  */
 function updateTrail(circle, trail, trailElements) {
 	// Shift all positions in the trail array to the next position
