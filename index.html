@@ -22,6 +22,7 @@
 		<script type="module" src="js/helpers.js"></script>
 		<title>Anders Hofsten | Frontend Developer</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</head>
 	<body class="fade-in">
 		<header>
@@ -340,7 +341,11 @@
 								code, I'm eager to chat :)
 							</p>
 							<div class="form-wrapper">
-								<form action="/submit" method="POST" class="form-flex">
+								<form
+									action="https://formspree.io/f/mdoqdnjo"
+									method="POST"
+									class="form-flex"
+									id="form">
 									<div>
 										<div class="form-group">
 											<label for="name">Name:</label>
@@ -355,8 +360,11 @@
 											<textarea id="message" name="message" required></textarea>
 										</div>
 										<div class="form-group">
-											<div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+											<div
+												id="recaptcha"
+												data-sitekey="6Lc3-YopAAAAAJoL_1CdojBQbuYDc2pdp2pz9wZC"></div>
 										</div>
+										<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
 									</div>
 									<button type="submit">Submit</button>
 									<div id="myModal" class="modal">

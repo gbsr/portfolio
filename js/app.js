@@ -121,44 +121,52 @@ function updateProfileTransform(speed) {
 	animate();
 }
 
-const form = document.querySelector('form');
 const modal = document.querySelector('#myModal');
 const closeBtn = document.querySelector('.close');
 
-form.addEventListener('submit', function (event) {
-	event.preventDefault(); // Prevent the form from submitting normally
 
-	// Show the modal
-	modal.style.visibility = 'visible';
-	modal.style.height = '100%';
-	modal.style.width = '100%';
-	modal.style.opacity = '1';
-
-	// Automatically close the modal after 3 seconds
-	setTimeout(function () {
-		// Hide the modal
-		modal.style.opacity = '0';
-		modal.style.height = '0%';
-		modal.style.width = '0%';
-		setTimeout(() => {
-			modal.style.visibility = 'hidden';
-		}, 500); // Delay visibility to after the transition
-
-		// Redirect to the homepage
-		window.location.href = '/';
-	}, 3000);
-});
 /**
  * Adds mouseover and mouseout event listeners to portfolio items
  * to add a 3D transform on mouseover and remove it on mouseout.
  * The transform applies a random rotation on the X and Y axes,
  * and a slight scale increase.
  */
+
+
+let recaptchaRendered = false;
+
 window.onload = function () {
+	console.log('window.onload called');
+
 	// fade in page
 	document.body.classList.add('visible');
 	console.log('fading in');
 
+	// only render captcha if it hasn't already been rendered
+	if (!recaptchaRendered) {
+		console.log('rendering reCAPTCHA');
+		grecaptcha.render('recaptcha', {
+			'sitekey': '6Lc3-YopAAAAAJoL_1CdojBQbuYDc2pdp2pz9wZC',
+
+			'callback': function () {
+				// When the user completes the reCAPTCHA, get the response
+				let response = grecaptcha.getResponse();
+
+				// Check if the response is not empty
+				if (response) {
+					// Set the response as the value of the hidden input field
+					document.getElementById('g-recaptcha-response').value = response;
+				} else {
+					// The reCAPTCHA has not been completed or has expired, handle this case
+					console.log('reCAPTCHA not completed or expired');
+				}
+			}
+		});
+		recaptchaRendered = true;
+
+	} else {
+		console.log('reCAPTCHA already rendered');
+	}
 	const portfolioItems = document.querySelectorAll(".portfolio-item");
 
 	portfolioItems.forEach((item, index) => {
@@ -243,7 +251,9 @@ window.onload = function () {
 
 
 		const links = document.querySelectorAll('a');
-		const button = document.querySelector('button'); // Use querySelector if you have only one button
+		const inputs = document.querySelectorAll('input');
+		const button = document.querySelector('button');
+		const message = document.getElementById('message');
 
 		links.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
@@ -260,6 +270,21 @@ window.onload = function () {
 				});
 			});
 		});
+		inputs.forEach((input) => {
+			input.addEventListener('mouseenter', () => {
+				circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
+				trailElements.forEach((el) => {
+					el.style.backgroundColor = 'rgb(1, 255, 85)';
+				});
+			});
+
+			input.addEventListener('mouseleave', () => {
+				circleElement.style.backgroundColor = '#2ac2e4';
+				trailElements.forEach((el) => {
+					el.style.backgroundColor = '#2ac2e4';
+				});
+			});
+		});
 
 		// Add event listeners to the button
 		button.addEventListener('mouseenter', () => {
@@ -270,6 +295,20 @@ window.onload = function () {
 		});
 
 		button.addEventListener('mouseleave', () => {
+			circleElement.style.backgroundColor = '#2ac2e4';
+			trailElements.forEach((el) => {
+				el.style.backgroundColor = '#2ac2e4';
+			});
+		});
+
+		message.addEventListener('mouseenter', () => {
+			circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
+			trailElements.forEach((el) => {
+				el.style.backgroundColor = 'rgb(1, 255, 85)';
+			});
+		});
+
+		message.addEventListener('mouseleave', () => {
 			circleElement.style.backgroundColor = '#2ac2e4';
 			trailElements.forEach((el) => {
 				el.style.backgroundColor = '#2ac2e4';
@@ -322,7 +361,37 @@ window.onload = function () {
 	};
 };
 
+// Get the reCAPTCHA response when the form is submitted
+document.getElementById('form').addEventListener('submit', function (event) {
+	event.preventDefault(); // Prevent the form from submitting normally
 
+	let response = grecaptcha.getResponse();
+
+	// Add the response to your form
+	let form = document.getElementById('form');
+	let input = document.createElement('input');
+	input.type = 'hidden';
+	input.name = 'g-recaptcha-response';
+	input.value = response;
+	form.appendChild(input);
+
+	// Submit the form using AJAX
+	let xhr = new XMLHttpRequest();
+	xhr.open(form.method, form.action);
+	xhr.setRequestHeader('Accept', 'application/json'); // Ensure you're expecting a JSON response
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState !== XMLHttpRequest.DONE) return;
+		if (xhr.status === 200) {
+			// Form submitted successfully, you can show a success message
+			console.log('Form submitted successfully');
+		} else {
+			// There was an error, you can handle it here
+			console.error('There was an error submitting the form:', xhr.responseText);
+		}
+	};
+	xhr.send(new FormData(form));
+
+});
 function updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, circleElement) {
 	const lerpSpeed = 0.05; // adjust this value to change the speed of the transition
 	originX += (targetOriginX - originX) * lerpSpeed;

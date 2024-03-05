@@ -42,7 +42,7 @@ body {
 	/* scroll-snap-type: y mandatory; */
 	overflow-y: scroll;
 	overflow-x: hidden;
-	scroll-padding-top: 14rem;
+	scroll-padding-top: 1rem;
 
 	margin: 0;
 	padding: 0;

@@ -43,6 +43,7 @@
 
 .form-wrapper {
 	max-width: 1000px;
+	cursor: none;
 }
 
 .form-group {
@@ -61,6 +62,7 @@ form {
 }
 
 label {
+	cursor: none;
 	padding-bottom: 1.35rem;
 }
 
@@ -75,6 +77,7 @@ input,
 	color: #282928;
 	padding: 1.35rem;
 	transition: 0.5s;
+	cursor: none;
 }
 
 input:hover,
