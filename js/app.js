@@ -126,16 +126,6 @@ const modalError = document.querySelector('#myModal-error');
 const closeBtn = document.querySelector('.close');
 
 
-/**
- * Adds mouseover and mouseout event listeners to portfolio items
- * to add a 3D transform on mouseover and remove it on mouseout.
- * The transform applies a random rotation on the X and Y axes,
- * and a slight scale increase.
- */
-
-
-// let recaptchaRendered = false;
-
 window.onload = function () {
 	console.log('window.onload called');
 
@@ -143,32 +133,12 @@ window.onload = function () {
 	document.body.classList.add('visible');
 	console.log('fading in');
 
-	// // // only render captcha if it hasn't already been rendered
-	// if (!recaptchaRendered) {
-	// 	console.log('rendering reCAPTCHA');
-	// 	grecaptcha.render('recaptcha', {
-	// 		'sitekey': '6Lc3-YopAAAAAJoL_1CdojBQbuYDc2pdp2pz9wZC',
-
-	// 		'callback': function () {
-	// 			// When the user completes the reCAPTCHA, get the response
-	// 			let response = grecaptcha.getResponse();
-
-	// 			// Check if the response is not empty
-	// 			if (response) {
-	// 				// Set the response as the value of the hidden input field
-	// 				console.log('response' + response);
-	// 				document.getElementById('g-recaptcha-response').value = response;
-	// 			} else {
-	// 				// The reCAPTCHA has not been completed or has expired, handle this case
-	// 				console.log('reCAPTCHA not completed or expired');
-	// 			}
-	// 		}
-	// 	});
-	// 	recaptchaRendered = true;
-
-	// } else {
-	// 	console.log('reCAPTCHA already rendered');
-	// }
+	/**
+	 * Loops through each portfolio item, adds mouseover and mouseout event
+	 * listeners to animate the items on hover.
+	 * On mouseover, applies a random perspective transform with rotation and scale.
+	 * On mouseout, resets transform to default state.
+	 */
 	const portfolioItems = document.querySelectorAll(".portfolio-item");
 
 	portfolioItems.forEach((item, index) => {
@@ -211,13 +181,10 @@ window.onload = function () {
 
 	const circleElement = document.querySelector('.circle');
 
-	if (('ontouchstart' in window)) {
-		circleElement.style.display = 'none';
-	}
-
 	// run after page load, and only if no touchdevice.
 	if (!('ontouchstart' in window)) {
 		document.body.style.cursor = 'none';
+		circleElement.style.display = 'none';
 
 		// mouse pointer animation
 		/**
@@ -288,7 +255,7 @@ window.onload = function () {
 			});
 		});
 
-		// Add event listeners to the button
+		// Add event listeners - YES I WILL CLEAN THIS UP HAHA!
 		button.addEventListener('mouseenter', () => {
 			circleElement.style.backgroundColor = 'rgb(1, 255, 85)';
 			trailElements.forEach((el) => {
@@ -420,6 +387,17 @@ form.addEventListener('submit', function (e) {
 			form.reset();
 		});
 });
+/**
+ * Updates the transform origin of the given circle element by lerping between
+ * the current origin and the target origin by a fixed lerpSpeed.
+ *
+ * @param {number} originX - The x value of the current transform origin
+ * @param {number} targetOriginX - The target x value to lerp to
+ * @param {number} originY - The y value of the current transform origin
+ * @param {number} targetOriginY - The target y value to lerp to
+ * @param {HTMLElement} circleElement - The circle element to update
+ * @returns {Object} - The new origin x and y values after lerping
+ */
 function updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, circleElement) {
 	const lerpSpeed = 0.05; // adjust this value to change the speed of the transition
 	originX += (targetOriginX - originX) * lerpSpeed;
@@ -430,8 +408,23 @@ function updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, c
 	return { originX, originY };
 }
 
+/**
+ * Updates the rotation and transform origin of the circle element based on mouse movement.
+ *
+ * Calculates a target rotation angle and transform origin using the mouse delta positions.
+ * Applies a threshold on the mouse velocity to reduce shakiness.
+ * Returns the updated transform origin and rotation transform string.
+ *
+ * @param {number} deltaMouseY - Change in mouse Y position
+ * @param {number} deltaMouseX - Change in mouse X position
+ * @param {number} mouseVelocity - Speed of mouse movement
+ * @param {number} currentAngle - Current rotation angle
+ * @param {Object} mouse - Mouse position object
+ * @param {HTMLElement} circle - Circle element to rotate
+ * @returns {Object} - Target origin coords and rotation transform string
+ */
 function updateRotation(deltaMouseY, deltaMouseX, mouseVelocity, currentAngle, mouse, circle) {
-	const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
+	const angle = (Math.atan2(deltaMouseY, deltaMouseX) * 180) / Math.PI;
 	// 2. Check for a threshold to reduce shakiness at low mouse velocity
 	if (mouseVelocity > 20) {
 		currentAngle = angle;
@@ -445,6 +438,16 @@ function updateRotation(deltaMouseY, deltaMouseX, mouseVelocity, currentAngle, m
 	return { targetOriginX, targetOriginY, rotateTransform, currentAngle };
 }
 
+/**
+ * Calculates mouse velocity and updates scale based on mouse movement.
+ * Smoothes scaling transition.
+ *
+ * @param {Object} mouse - Current mouse position
+ * @param {Object} previousMouse - Previous mouse position
+ * @param {number} currentScale - Current scale value
+ * @param {number} speed - Transition speed for smoothing
+ * @returns {Object} - Mouse velocity, scale transform and updated scale
+ */
 function squeeze(mouse, previousMouse, currentScale, speed) {
 	const deltaMouseX = mouse.x - previousMouse.x;
 	const deltaMouseY = mouse.y - previousMouse.y;
@@ -462,6 +465,14 @@ function squeeze(mouse, previousMouse, currentScale, speed) {
 	return { deltaMouseY, deltaMouseX, mouseVelocity, scaleTransform, currentScale };
 }
 
+/**
+ * Updates circle position based on mouse movement
+ *
+ * @param {Object} circle - Circle element to move
+ * @param {Object} mouse - Current mouse position
+ * @param {number} speed - Transition speed for circle movement
+ * @returns {string} translateTransform - CSS transform for translation
+ */
 function mouseMove(circle, mouse, speed) {
 	circle.x += (mouse.x - circle.x) * speed;
 	circle.y += (mouse.y - circle.y) * speed;
@@ -470,13 +481,23 @@ function mouseMove(circle, mouse, speed) {
 	return translateTransform;
 }
 
+/**
+ * Creates an array of trail elements by generating divs, styling them,
+ * appending them to the DOM, and returning both the data array and
+ * array of elements.
+ *
+ * The size of each trail element is based on its index in the trail array.
+ *
+ * @param {number} length - Length of trail data array to generate
+ * @returns {Object} - trail array and trailElements array
+ */
 function createTrailElements(length) {
 	const trail = Array.from({ length }, () => ({ x: 0, y: 0 }));
 
 	// Create an array of elements for the trailing circles
 	const trailElements = trail.map((_, i) => {
-		const el = document.createElement('div');
-		el.classList.add('trail');
+		const el = document.createElement("div");
+		el.classList.add("trail");
 
 		// Set the initial size of the element based on its index
 		const size = 14 - i * 1.5;
@@ -491,6 +512,17 @@ function createTrailElements(length) {
 	return { trail, trailElements };
 }
 
+/**
+ * Updates the trail array and DOM elements to match the current circle position.
+ *
+ * Shifts all trail positions back by one, dropping the last position. Sets
+ * the first trail position to the current circle x/y. Then translates each
+ * trail DOM element to match the updated trail positions.
+ *
+ * @param {Object} circle - The circle element
+ * @param {Array} trail - Array of trail positions
+ * @param {Array} trailElements - Array of trail DOM elements
+ */
 function updateTrail(circle, trail, trailElements) {
 	// Shift all positions in the trail array to the next position
 	for (let i = trail.length - 1; i > 0; i--) {
