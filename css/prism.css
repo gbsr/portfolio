@@ -1,11 +1,11 @@
 /* PrismJS 1.29.0
-https://prismjs.com/download.html#themes=prism-tomorrow */
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+docker+graphql+json+python+jsx+tsx+scss+sql+typescript */
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #ccc;
 	background: 0 0;
 	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-	font-size: calc(1em - 0.2vw);
+	font-size: 1em;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -30,11 +30,8 @@ pre[class*="language-"] {
 	background: #2d2d2d;
 }
 :not(pre) > code[class*="language-"] {
-	font-size: calc(1.25rem - 0.2vw);
-	background: transparent;
-	margin-top: 0.35rem;
-	margin-bottom: 0.35rem;
-	padding-inline: 1.35rem;
+	padding: 1rem;
+	border-radius: 0.3rem;
 	white-space: normal;
 }
 .token.block-comment,

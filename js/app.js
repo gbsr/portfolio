@@ -430,22 +430,6 @@ function updateTransformOrigin(originX, targetOriginX, originY, targetOriginY, c
 	return { originX, originY };
 }
 
-/**
- * Updates the rotation and transform origin of the circle element based on mouse movement.
- *
- * Calculates a new rotation angle from the mouse delta. Checks if mouse velocity is above a threshold
- * to reduce shakiness at low velocities. Generates a rotate transform string for the new angle.
- * Calculates target transform origin coordinates based on mouse position relative to circle.
- *
- * @param {number} deltaMouseY - Change in mouse Y position
- * @param {number} deltaMouseX - Change in mouse X position
- * @param {number} mouseVelocity - Speed of mouse movement
- * @param {number} currentAngle - Current rotation angle of circle
- * @param {Object} mouse - Mouse position object with x and y
- * @param {HTMLElement} circle - The circle element to rotate
- *
- * @returns {Object} - Target origin x and y coords, rotate transform string, and new angle value
- */
 
 /**
  * Updates the rotation and transform origin of the circle element based on mouse movement.

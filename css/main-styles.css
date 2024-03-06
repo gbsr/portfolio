@@ -90,6 +90,7 @@ footer {
 	z-index: 9999;
 	font-family: var(--brand-font-main);
 	font-weight: 800;
+	/* font-size: calc(1rem + 0.1vw); */
 	font-size: var(--size-fluid-4);
 	opacity: 0.98;
 	overflow: hidden;
@@ -129,6 +130,7 @@ code > .language-javascript {
 }
 
 .logo {
+	padding-bottom: 0.35rem;
 	max-width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -214,13 +216,16 @@ footer {
 	h1 {
 		font-size: var(--size-fluid-5);
 	}
-	hero {
-		justify-content: space-around;
-		height: 60%;
+	.hero {
+		transform: translateY(1rem);
 	}
-	header,
+
 	footer {
 		font-size: var(--size-fluid-3);
+		flex-direction: column;
+	}
+	header {
+		font-size: var(--size-fluid-3) !important;
 		flex-direction: column;
 	}
 }
