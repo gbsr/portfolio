@@ -36,6 +36,16 @@ li:hover {
 	width: 55%;
 }
 
+@media (max-width: 1180px) {
+	.menu {
+		flex-direction: column;
+		align-items: flex-end;
+	}
+	footer .menu {
+		flex-direction: row;
+	}
+}
+
 .underline {
 	transition: 0.1s;
 	width: 100%;

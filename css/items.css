@@ -51,7 +51,12 @@
 	max-width: 1000px;
 	display: flex;
 	flex-direction: column;
-	font-size: calc(2rem + 0.1vh);
+	font-size: calc(1rem + 0.1vh);
+}
+
+input,
+#message {
+	font-size: calc(1rem + 0.1vh); /* Adjust this value as needed */
 }
 
 form {
@@ -73,9 +78,8 @@ input,
 	padding: 0.35rem;
 	border-radius: 10px;
 	caret-color: #282928;
-	font-size: calc(2rem + 0.1vh);
 	color: #282928;
-	padding: 1.35rem;
+	padding: calc(0.5rem + 0.1vw);
 	transition: 0.5s;
 	cursor: none;
 }
@@ -93,7 +97,7 @@ input:focus,
 button {
 	align-self: flex-end;
 	width: 10rem;
-	font-size: calc(2rem + 0.1vh);
+	font-size: calc(1rem + 0.1vh);
 	padding: 1.35rem;
 	border-radius: 10px;
 	background-color: #2ac2e4;
@@ -267,7 +271,7 @@ button:focus {
 .about-title {
 	margin-top: 2rem;
 	font-weight: bolder;
-	font-size: calc(3rem + 0.2vw);
+	font-size: calc(1.85rem + 0.2vw);
 	color: var(--brand-color-accent);
 }
 .card {
@@ -288,7 +292,7 @@ button:focus {
 .card-span {
 	display: inline-block;
 	font-size: calc(1.25rem + 0.25vw);
-	transform: translateY(-2rem);
+	transform: translateY(-1rem);
 }
 
 .card > a,
@@ -298,7 +302,7 @@ button:focus {
 
 .screenshot {
 	transition: 0.5s;
-	max-width: 380px;
+	max-width: 500px;
 	margin-right: 20px;
 	border-radius: 20px;
 	border: 1px solid rgba(100, 99, 99, 0.281);
@@ -328,7 +332,7 @@ button:focus {
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -351,9 +355,7 @@ button:focus {
 	}
 
 	.card {
-		max-width: 380px;
-		max-height: 120px;
-		border: 2px solid pink;
+		max-height: 240px;
 		overflow: hidden; /* Prevents the image from overflowing the card */
 		display: flex; /* Makes the card a flex container */
 		justify-content: center; /* Centers the image horizontally */
@@ -410,5 +412,14 @@ button:focus {
 	.grid2 {
 		margin: 0 auto;
 		z-index: 100;
+	}
+}
+
+@media (max-width: 1170px) {
+	.form-group,
+	input,
+	#message,
+	button {
+		font-size: calc(1.5rem + 0.1vh);
 	}
 }
