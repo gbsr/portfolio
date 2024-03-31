@@ -20,5 +20,5 @@
 	opacity: 0.45;
 	background-color: #2ac2e4;
 	border-radius: 100%;
-	pointer-events: none; /* This makes the elements not interfere with mouse events */
+	pointer-events: none;
 }

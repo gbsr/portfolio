@@ -6,7 +6,6 @@
 .container {
 	--num-cols: 2;
 	grid-row: 2;
-	/* --row-height: 100px; */
 	display: grid;
 	margin: 0;
 	width: 100%;
@@ -18,7 +17,6 @@
 
 .about-wrapper {
 	margin: 0 auto;
-	/* height: 80vh; */
 }
 
 .about,
@@ -29,9 +27,7 @@
 }
 .anchor-point {
 	color: #2ac2e4;
-	/* transform: translateY(7rem) translateX(-3rem); */
 	font-size: var(--size-fluid-6);
-	/* background: transparent; */
 }
 
 .contact-content {
@@ -56,7 +52,7 @@
 
 input,
 #message {
-	font-size: calc(1rem + 0.1vh); /* Adjust this value as needed */
+	font-size: calc(1rem + 0.1vh);
 }
 
 form {
@@ -89,7 +85,6 @@ input:focus,
 #message:hover,
 #message:focus {
 	border-radius: 10px;
-	/* transform: scale(1.02); */
 	transition: 0.5s;
 	box-shadow: 0px 0px 40px #0ca3dae2;
 }
@@ -114,17 +109,16 @@ button:focus {
 }
 
 .modal {
-	visibility: hidden; /* Hidden by default */
+	visibility: hidden;
 	opacity: 0;
-	transition: visibility 0s 0.5s, opacity 0.5s linear; /* Animate visibility after opacity */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+	transition: visibility 0s 0.5s, opacity 0.5s linear;
+	z-index: 1;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -191,7 +185,6 @@ button:focus {
 
 .grid1 img {
 	margin-left: 4rem;
-	/* transform: translateX(-25%); */
 	object-fit: cover;
 	object-position: cover;
 	height: var(--size-fluid-9);
@@ -264,7 +257,7 @@ button:focus {
 .portfolio-item:hover .screenshot,
 .portfolio-item:focus .screenshot {
 	transition: 0.5s;
-	box-shadow: 0 0 40px #0ca3da; /* Adjust color and blur radius as needed */
+	box-shadow: 0 0 40px #0ca3da;
 }
 
 .portfolio-title,
@@ -356,10 +349,10 @@ button:focus {
 
 	.card {
 		max-height: 240px;
-		overflow: hidden; /* Prevents the image from overflowing the card */
-		display: flex; /* Makes the card a flex container */
-		justify-content: center; /* Centers the image horizontally */
-		align-items: center; /* Centers the image vertically */
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.card img {

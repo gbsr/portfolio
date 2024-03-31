@@ -55,7 +55,6 @@ i:focus {
 
 body {
 	scroll-behavior: smooth;
-	/* scroll-snap-type: y mandatory; */
 	overflow-y: scroll;
 	overflow-x: hidden;
 	scroll-padding-top: 1rem;
@@ -69,32 +68,31 @@ body {
 	box-sizing: border-box;
 }
 html {
-	font-size: 16px; /* 1rem = 16px */
+	font-size: 14px;
 	font-family: "Poppins", sans-serif;
 }
 
 /* Increase font size for larger screens */
-/* Increase font size for larger screens */
 @media (min-width: 768px) {
 	html {
-		font-size: 1.125rem; /* 1rem = 18px */
+		font-size: 1.125rem;
 	}
 }
 
 @media (min-width: 1024px) {
 	html {
-		font-size: 1.25rem; /* 1rem = 20px */
+		font-size: 1.25rem;
 	}
 }
 
 @media (min-width: 1170px) {
 	html {
-		font-size: 1.375rem; /* 1rem = 22px */
+		font-size: 1.375rem;
 	}
 }
 
 body {
-	font-size: 1rem; /* This will now be responsive to the html font-size */
+	font-size: 1rem;
 }
 a {
 	text-decoration: none;
@@ -152,10 +150,6 @@ footer {
 }
 
 .section2 {
-	/* transform: rotate(1deg) translateX(-2%) translateY(2.25rem); */
-	/* width: 150%; */
-
-	/* background-color: #fcfcfc; */
 	max-width: 1000px;
 	margin: 0 auto;
 	width: 90%;
@@ -166,7 +160,6 @@ code > .language-javascript {
 }
 
 .section-about {
-	/* padding: 4rem; */
 	margin: 0 auto;
 	max-width: 1000px;
 }
@@ -199,7 +192,6 @@ code > .language-javascript {
 }
 
 .turned {
-	/* border: 1px dashed var(--brand-color-accent-semi); */
 	padding-top: 20px;
 	padding-bottom: 20px;
 	display: inline-block;
