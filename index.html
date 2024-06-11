@@ -108,28 +108,175 @@
 				</h1>
 
 				<div class="portfolio-content">
-					<div class="portfolio-item" id="blog">
-						<a href="https://pushing-pixels.vercel.app/" target="_blank">
+					<div class="portfolio-item" id="webshop">
+						<a href="https://gbsr.github.io/atTheBeach/" target="_blank">
 							<div class="card">
 								<img
-									src="./resources/img/screenshots/blog3.jpg"
-									alt="Pokemon Team Manager"
+									src="./resources/img/screenshots/atTheBeach.jpg"
+									alt="At The Beach webshop"
 									class="screenshot"
 									target="_blank" />
 							</div>
 						</a>
 						<div class="description-wrapper">
 							<div class="portfolio-title">
-								<a href="https://pushing-pixels.vercel.app/" class="blue" target="_blank"
-									>Pushing Pixels</a
-								>
+								<a href="https://gbsr.github.io/atTheBeach/" class="blue" target="_blank">At the Beach</a>
 							</div>
 							<p>
-								I wanted a blog to write down bits and pieces that I stumble across as I am exploring
-								Frontend Development. So I took the opportunity to try and make a little more worthwhile
+								As part of our second course in JavaScript, we had to do a webshop with some certain criterias. It had
+								to be responsive, (use React), had to list X amounts of products, and there had to be a login with an
+								administrator mode and a shopping cart. Everything had to be synced using state-management and a
+								database connection. When logged in as an administrator you should be able to either add/delete or
+								change the content of the store.
+							</p>
+							<p>
+								I am aware that the code has API secret keys exposed, as well as login + password, but this was a
+								requirement by the teacher.
+							</p>
+							<ul>
+								<li>
+									<strong>Frontend Framework:</strong>
+									<ul>
+										<li><a href="https://18.react.dev/" target="_blank" class="blue">React (v18.2.0)</a></li>
+									</ul>
+								</li>
+								<li>
+									<strong>Routing:</strong>
+									<ul>
+										<li>
+											<a href="https://reactrouter.com/en/main" target="_blank" class="blue"
+												>React Router DOM (v6.23.0)</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<strong>State Management:</strong>
+									<ul>
+										<li>
+											<a href="https://github.com/pmndrs/zustand" target="_blank" class="blue">Zustand (v4.5.2)</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<strong>Styling:</strong>
+									<ul>
+										<li>
+											<a href="https://styled-components.com/" target="_blank" class="blue"
+												>Styled-Components (v6.1.8)</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<strong>Backend and Database:</strong>
+									<ul>
+										<li><a href="https://firebase.google.com/" target="_blank" class="blue">Firebase (v10.11.1)</a></li>
+										<li>
+											<a href="https://firebase.google.com/docs/firestore/" target="_blank" class="blue"
+												>Firestore (v1.1.6)</a
+											>
+										</li>
+									</ul>
+									<strong>Deployment:</strong>
+									<ul>
+										<li>
+											<a href="https://www.npmjs.com/package/gh-pages§" target="_blank" class="blue"
+												>GH Pages (v6.1.1)</a
+											>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="portfolio-item" id="studyplanner">
+						<a href="https://gbsr.github.io/study-planner/" target="_blank">
+							<div class="card">
+								<img
+									src="./resources/img/screenshots/studyPlanner.jpg"
+									alt="Study Planner"
+									class="screenshot"
+									target="_blank" />
+							</div>
+						</a>
+						<div class="description-wrapper">
+							<div class="portfolio-title">
+								<a href="https://gbsr.github.io/study-planner/" class="blue" target="_blank">Study Planner</a>
+							</div>
+							<p>
+								In our course about testing we got a somewhat broken version of a studyplanner, and had to use different
+								testing frameworks and test-driven development to fix it into a working version. Since I immediately saw
+								the value of this project, I also hooked it up to firebase for good measure, so I can use it for myself,
+								as well as refactored some code. Clearing an item tells the database it is cleared and updates.
+							</p>
+							<p>
+								Project will get refactored more, and states are properly not being re-rendered fully on adding/deleting
+								items, and I am aware of this, but will fix that later on as I will redo the entire styling anyways into
+								a workable product that I can/want to use!
+							</p>
+							<p>Tests written were both E2E tests and unit-tests.</p>
+							<ul>
+								<li>
+									<strong>Testing:</strong>
+									<ul>
+										<li><a href="https://www.cypress.io/" target="_blank" class="blue">Cypress (v13.9.0)</a></li>
+									</ul>
+									<ul>
+										<li><a href="https://vitest.dev/" target="_blank" class="blue">Vitest (v1.6.0)</a></li>
+									</ul>
+								</li>
+								<li>
+									<strong>Backend and Database:</strong>
+									<ul>
+										<li><a href="https://firebase.google.com/" target="_blank" class="blue">Firebase (v10.12.0)</a></li>
+									</ul>
+								</li>
+								<li>
+									<strong>Deployment:</strong>
+									<ul>
+										<li>
+											<a href="https://www.npmjs.com/package/gh-pages§" target="_blank" class="blue"
+												>GH Pages (v6.1.1)</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<strong>Frontend Framework:</strong>
+									<ul>
+										<li><a href="https://18.react.dev/" target="_blank" class="blue">React (v18.2.0)</a></li>
+									</ul>
+								</li>
+								<li>
+									<strong>State Management:</strong>
+									<ul>
+										<a href="https://github.com/pmndrs/zustand" target="_blank" class="blue">Zustand (v4.5.2)</a>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="portfolio-item" id="blog">
+						<a href="https://pushing-pixels.vercel.app/" target="_blank">
+							<div class="card">
+								<img
+									src="./resources/img/screenshots/blog3.jpg"
+									alt="Pushing Pixels Blog"
+									class="screenshot"
+									target="_blank" />
+							</div>
+						</a>
+						<div class="description-wrapper">
+							<div class="portfolio-title">
+								<a href="https://pushing-pixels.vercel.app/" class="blue" target="_blank">Pushing Pixels</a>
+							</div>
+							<p>
+								I wanted a blog to write down bits and pieces that I stumble across as I am exploring Frontend
+								Development. So I took the opportunity to try and make a little more worthwhile
 								<a href="https://react.dev/" target="_blank" class="blue">React</a> /
-								<a href="https://nextjs.org/" target="_blank" class="blue">NextJS</a> project that I can
-								actually use for something.
+								<a href="https://nextjs.org/" target="_blank" class="blue">NextJS</a> project that I can actually use
+								for something.
 							</p>
 						</div>
 					</div>
@@ -145,9 +292,7 @@
 						</a>
 						<div class="description-wrapper">
 							<div class="portfolio-title">
-								<a href="https://gbsr.github.io/poke-team/" class="blue" target="_blank"
-									>Pokemon Team Manager</a
-								>
+								<a href="https://gbsr.github.io/poke-team/" class="blue" target="_blank">Pokemon Team Manager</a>
 							</div>
 							<p>
 								For the JavaScript Fundamentals continuation focusing on APIs, as a project for my
@@ -158,14 +303,13 @@
 									>Frontend Developer programme</a
 								>
 								at
-								<a href="https://www.nbi-handelsakademin.se/" class="blue" target="_blank">
-									NBI Handelsakademin</a
-								>, I developed a Pokemon Team Manager application using the
+								<a href="https://www.nbi-handelsakademin.se/" class="blue" target="_blank"> NBI Handelsakademin</a>, I
+								developed a Pokemon Team Manager application using the
 								<a href="https://pokeapi.co/" class="blue" target="_blank">PokeAPI</a>.
 							</p>
 							<p>
-								This project demonstrates my practical application of JavaScript fundamentals,
-								showcasing the ability to integrate and manipulate data from external APIs.
+								This project demonstrates my practical application of JavaScript fundamentals, showcasing the ability to
+								integrate and manipulate data from external APIs.
 							</p>
 							<p>
 								Create your team
@@ -186,20 +330,15 @@
 						</a>
 						<div class="description-wrapper">
 							<div class="portfolio-title">
-								<a href="https://gbsr.github.io/todo-app/" class="blue" target="_blank"
-									>Ultra minimalistic Todo App</a
-								>
+								<a href="https://gbsr.github.io/todo-app/" class="blue" target="_blank">Ultra minimalistic Todo App</a>
 							</div>
 							<p>
 								In my exploration in
-								<a
-									href="https://developer.mozilla.org/en-US/docs/Glossary/JavaScript"
-									target="_blank"
-									class="blue"
+								<a href="https://developer.mozilla.org/en-US/docs/Glossary/JavaScript" target="_blank" class="blue"
 									>JavaScript </a
-								>fundamentals, particularly local storage which opened up the potential of (somewhat)
-								persistent data, I created an ultra minimalistic todo app. This was made purely as an
-								exercise into local storage and DOM manipulation.
+								>fundamentals, particularly local storage which opened up the potential of (somewhat) persistent data, I
+								created an ultra minimalistic todo app. This was made purely as an exercise into local storage and DOM
+								manipulation.
 							</p>
 							<p>
 								Get your productivity zen on
@@ -219,19 +358,14 @@
 						</a>
 						<div class="description-wrapper">
 							<div class="portfolio-title">
-								<a href="https://gbsr.github.io/find_that_movie/" target="_blank" class="blue"
-									>Find That Movie</a
-								>
+								<a href="https://gbsr.github.io/find_that_movie/" target="_blank" class="blue">Find That Movie</a>
 							</div>
 							<p>
-								As my first <a href="https://react.dev/" target="_blank" class="blue">React</a> project,
-								I did a little app that lists movies, and their cover-art and sends you to
-								<a href="https://imdb.com" class="blue" target="_blank">IMDB</a> in case you want more
-								information about the movie. This was made purely as an exercise into React
-								fundamentals. It uses the
-								<a href="https://www.omdbapi.com/" class="blue" target="_blank">
-									Open Movie DataBase
-								</a>
+								As my first <a href="https://react.dev/" target="_blank" class="blue">React</a> project, I did a little
+								app that lists movies, and their cover-art and sends you to
+								<a href="https://imdb.com" class="blue" target="_blank">IMDB</a> in case you want more information about
+								the movie. This was made purely as an exercise into React fundamentals. It uses the
+								<a href="https://www.omdbapi.com/" class="blue" target="_blank"> Open Movie DataBase </a>
 								for API calls.
 							</p>
 							<p>
@@ -268,21 +402,15 @@
 
 						<div class="portfolio-title">Game projects</div>
 						<p>
-							I have also worked on numerous game projects, both designing audio, audio implementation, as
-							well as making tools for faster workflow and world audio design.
+							I have also worked on numerous game projects, both designing audio, audio implementation, as well as
+							making tools for faster workflow and world audio design.
 						</p>
 						<p>
-							<a href="https://thqnordic.com/games/expeditions-rome" target="_blank" class="blue"
-								>Expeditions: Rome</a
-							>
+							<a href="https://thqnordic.com/games/expeditions-rome" target="_blank" class="blue">Expeditions: Rome</a>
 						</p>
-						<div class="card-span">
-							Additional Audio Design, Trailer Audio Design, Implementation, Tools
-						</div>
+						<div class="card-span">Additional Audio Design, Trailer Audio Design, Implementation, Tools</div>
 						<p>
-							<a href="https://www.mutantyearzero.com/" target="_blank" class="blue"
-								>Mutant Year Zero: Road to Eden</a
-							>
+							<a href="https://www.mutantyearzero.com/" target="_blank" class="blue">Mutant Year Zero: Road to Eden</a>
 						</p>
 						<div class="card-span">Audio Design, Implementation</div>
 						<p>
@@ -310,10 +438,10 @@
 					<div class="about-item">
 						<div class="description-wrapper">
 							<p id="about">
-								When not sitting in front of the computer and trying to make (or look at) cool web
-								things, I tend to spend most of my time either with my friends, out walking or biking. I
-								started studying Frontend Development in late 2023, and was working as a contract
-								technical game audio designer before that, while also working extra as a stagehand.
+								When not sitting in front of the computer and trying to make (or look at) cool web things, I tend to
+								spend most of my time either with my friends, out walking or biking. I started studying Frontend
+								Development in late 2023, and was working as a contract technical game audio designer before that, while
+								also working extra as a stagehand.
 							</p>
 							<p>I am based in Gothenburg, Sweden, and I am currently</p>
 							<div class="code-container">
@@ -339,20 +467,13 @@
 						<div class="description-wrapper">
 							<p>Questions? Ideas? Got a cool project that needs something?</p>
 							<p>
-								Whether you're a fellow developer, a potential client, or just want to geek out about
-								code, I'm eager to chat :)
+								Whether you're a fellow developer, a potential client, or just want to geek out about code, I'm eager to
+								chat :)
 							</p>
 							<div class="form-wrapper">
-								<form
-									action="https://api.web3forms.com/submit"
-									method="POST"
-									class="form-flex"
-									id="form">
+								<form action="https://api.web3forms.com/submit" method="POST" class="form-flex" id="form">
 									<div>
-										<input
-											type="hidden"
-											name="access_key"
-											value="18552c96-7ee3-4118-9663-12992c916c9b" />
+										<input type="hidden" name="access_key" value="18552c96-7ee3-4118-9663-12992c916c9b" />
 										<div class="form-group">
 											<label for="name">Name:</label>
 											<input type="text" id="name" name="name" required />
@@ -397,16 +518,10 @@
 				<div class="bottom-link">
 					<a href="#top" aria.label="Back to top">Anders Hofsten</a>
 				</div>
-				<a
-					href="https://www.linkedin.com/in/ahofsten/"
-					target="_blank"
-					aria-label="Anders Hofsten's LinkedIn profile">
+				<a href="https://www.linkedin.com/in/ahofsten/" target="_blank" aria-label="Anders Hofsten's LinkedIn profile">
 					<i class="fab fa-linkedin bottom-link"></i>
 				</a>
-				<a
-					href="https://twitter.com/soundsbyhofsten"
-					target="_blank"
-					aria.label="Anders Hofsten's Twitter profile">
+				<a href="https://twitter.com/soundsbyhofsten" target="_blank" aria.label="Anders Hofsten's Twitter profile">
 					<i class="fab fa-twitter bottom-link"></i>
 				</a>
 			</div>
@@ -452,12 +567,7 @@
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
 					</div>
-					<a
-						href="https://pushing-pixels.vercel.app/"
-						aria-label="Link to Pushing Pixels blog"
-						target="_blank"
-						>Blog</a
-					>
+					<a href="https://pushing-pixels.vercel.app/" aria-label="Link to Pushing Pixels blog" target="_blank">Blog</a>
 					<div class="cross">
 						<div class="vertical"></div>
 						<div class="horizontal"></div>
