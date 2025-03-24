@@ -130,7 +130,7 @@ footer {
 	z-index: 9999;
 	font-family: var(--brand-font-main);
 	font-weight: 800;
-	font-size: calc(2rem + 0.1vw);
+	/* font-size: calc(2rem + 0.1vw); */
 	/* font-size: 2.5rem; */
 	opacity: 0.98;
 	overflow: hidden;
@@ -264,7 +264,7 @@ footer {
 		flex-direction: column;
 	}
 	header {
-		font-size: calc(1rem + 0.5vw) !important;
+		font-size: calc(1.25rem + 0.5vw) !important;
 		flex-direction: column;
 	}
 }
